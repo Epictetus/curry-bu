@@ -1,0 +1,29 @@
+<h1>Listing images</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Comment</th>
+    <th>Image</th>
+    <th>Activity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @images.each do |image| %>
+  <tr>
+    <td><%= image.title %></td>
+    <td><%= image.comment %></td>
+    <td><%= image.image %></td>
+    <td><%= image.activity %></td>
+    <td><%= link_to 'Show', image %></td>
+    <td><%= link_to 'Edit', edit_image_path(image) %></td>
+    <td><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Image', new_image_path %>

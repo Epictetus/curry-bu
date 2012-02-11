@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210194740) do
+ActiveRecord::Schema.define(:version => 20120211150608) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "name",       :null => false
+    t.text     "comment"
+    t.date     "ate_at",     :null => false
+    t.integer  "shop_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "activities", ["shop_id"], :name => "index_activities_on_shop_id"
+
+  create_table "images", :force => true do |t|
+    t.string   "title",       :null => false
+    t.text     "comment"
+    t.string   "image",       :null => false
+    t.integer  "activity_id", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "images", ["activity_id"], :name => "index_images_on_activity_id"
+
+  create_table "shops", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "encrypted_password", :default => "", :null => false

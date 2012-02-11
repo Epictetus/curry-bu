@@ -1,5 +1,11 @@
 Currybu::Application.routes.draw do
 
+  resources :images
+
+  resources :activities
+
+  resources :shops
+
   devise_for :users
 
   # The priority is based upon order of creation:
