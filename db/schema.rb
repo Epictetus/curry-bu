@@ -11,29 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211150608) do
+ActiveRecord::Schema.define(:version => 20120212164532) do
 
   create_table "activities", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",                      :null => false
     t.text     "comment"
-    t.date     "ate_at",     :null => false
-    t.integer  "shop_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.date     "ate_at",                    :null => false
+    t.integer  "shop_id",                   :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "user_id",    :default => 0, :null => false
   end
 
   add_index "activities", ["shop_id"], :name => "index_activities_on_shop_id"
+  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
 
   create_table "images", :force => true do |t|
-    t.string   "title",       :null => false
+    t.string   "title",                      :null => false
     t.text     "comment"
-    t.string   "image",       :null => false
-    t.integer  "activity_id", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "image",                      :null => false
+    t.integer  "activity_id",                :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "user_id",     :default => 0, :null => false
   end
 
   add_index "images", ["activity_id"], :name => "index_images_on_activity_id"
+  add_index "images", ["user_id"], :name => "index_images_on_user_id"
 
   create_table "shops", :force => true do |t|
     t.string   "name",       :null => false

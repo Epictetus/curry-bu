@@ -27,6 +27,10 @@
     <%= f.label :shop %><br />
     <%= f.collection_select :shop_id, @shops, :id, :name, include_blank: "選択してください" %>
   </div>
+  <div class="field">
+    <%= f.label :shop %><br />
+    <%= f.collection_select :user_ids, @users, :id, :name, {}, {multiple: true, name: 'user[user_ids][]'} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

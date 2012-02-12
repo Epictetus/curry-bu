@@ -1,5 +1,22 @@
-<h1>CurryBu</h1>
-
-<%= link_to "カレー屋", shops_path %>
-<%= link_to "活動", activities_path %>
-<%= link_to "画像", images_path %>
+<% @activities.each do |activity| %>
+  <div class="span3">
+    <h1><%= activity.ate_at %></h1>
+  </div>
+  <div class="span6">
+    <h2><%= activity.shop.name %> - <%= activity.name %></h1>
+    <% activity.images.each do |image| %>
+      <%= image_tag image.image_url.to_s %><br />
+      <%= image.title %>(<%= image.user.name %>)<br />
+      <%= image.comment %><br />
+    <% end %>
+  </div>
+  <div class="span3">
+    <dl>
+      <dt>この活動を作った人</dt>
+      <dd><%= activity.user.name %></dd>
+      <dt>参加した人たち</dt>
+    </dl>
+    <%= link_to 'Show', activity %><br />
+    <%= link_to 'Edit', edit_activity_path(activity) %>
+  </div>
+<% end %>

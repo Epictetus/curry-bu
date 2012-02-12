@@ -26,6 +26,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     @shops = Shop.all
+    @users = User.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +44,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(params[:activity])
+    @activity.user_id = current_user.id.to_s
 
     respond_to do |format|
       if @activity.save
