@@ -37,27 +37,31 @@
           <%= link_to "CurryBu", root_path, {class: "brand"} %>
           <div class="container nav-collapse">
             <ul class="nav">
-                <li><%= link_to "お店", shops_path  %></li>
-                <li><%= link_to "活動", activities_path  %></li>
-                <li><%= link_to "画像", images_path  %></li>
-                <li><%= link_to "人", users_path  %></li>
+                <li><%= link_to "お店", shops_path %></li>
+                <li><%= link_to "活動", activities_path %></li>
+                <li><%= link_to "画像", images_path %></li>
+                <li><%= link_to "人", users_path %></li>
             </ul>
             <ul class="nav pull-right">
-              <li class="dropdown">
               <% if user_signed_in? %>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i><%= current_user.name %><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "設定", edit_user_registration_path %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, :method => 'delete' %></li>
-                </ul>
-              <% else %>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i>ログイン/新規登録<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "ログイン", new_user_session_path %></li>
-                  <li><%= link_to "新規登録", new_user_registration_path %></li>
-                </ul>
+                <li><%= link_to "アップロード", new_image_path %></li>
+                <li class="divider-vertical"></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "設定", edit_user_registration_path %></li>
+                    <li><%= link_to "ログアウト", destroy_user_session_path, :method => 'delete' %></li>
+                  </ul>
+                </li>
+                <% else %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ログイン/新規登録<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "ログイン", new_user_session_path %></li>
+                    <li><%= link_to "新規登録", new_user_registration_path %></li>
+                  </ul>
+                </li>
               <% end %>
-              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
