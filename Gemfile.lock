@@ -1,6 +1,6 @@
 GIT
   remote: http://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: fa5a816e4cc72b102fa525edaf0e6100ab021b15
+  revision: a9fffa0060a52ec92dd10daeabf36e0156c1f45c
   specs:
     twitter-bootstrap-rails (2.0.2)
       actionpack (>= 3.1)
@@ -135,13 +135,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  carrierwave
+  carrierwave (= 0.5.8)
   coffee-rails (~> 3.2.1)
-  devise
+  devise (= 2.0.1)
   jquery-rails
   mysql2
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
   sqlite3
-  twitter-bootstrap-rails!
+  twitter-bootstrap-rails (= 2.0.2)!
   uglifier (>= 1.0.3)
