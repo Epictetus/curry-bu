@@ -1,4 +1,8 @@
 class ActivitiesController < ApplicationController
+
+  before_filter :authenticate_user!,
+    except: [:index, :show]
+
   # GET /activities
   # GET /activities.json
   def index

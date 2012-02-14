@@ -1,4 +1,8 @@
 class ShopsController < ApplicationController
+
+  before_filter :authenticate_user!,
+    except: [:index, :show]
+
   # GET /shops
   # GET /shops.json
   def index
