@@ -11,20 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215015300) do
-
-  create_table "activities", :force => true do |t|
-    t.string   "name",                      :null => false
-    t.text     "comment"
-    t.date     "ate_at",                    :null => false
-    t.integer  "shop_id",                   :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "user_id",    :default => 0, :null => false
-  end
-
-  add_index "activities", ["shop_id"], :name => "index_activities_on_shop_id"
-  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
+ActiveRecord::Schema.define(:version => 20120215171859) do
 
   create_table "images", :force => true do |t|
     t.string   "title",                     :null => false
