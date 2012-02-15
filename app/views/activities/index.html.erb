@@ -16,7 +16,7 @@
     <td><%= activity.name %></td>
     <td><%= activity.comment %></td>
     <td><%= activity.ate_at %></td>
-    <td><%= activity.shop %></td>
+    <td><%= activity.shop.name %></td>
     <td><%= link_to 'Show', activity %></td>
     <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
     <td><%= link_to 'Destroy', activity, confirm: 'Are you sure?', method: :delete %></td>
