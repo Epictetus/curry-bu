@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    @activities = Activity.order("ate_at DESC").all
 
     respond_to do |format|
       format.html # index.html.erb
