@@ -41,6 +41,10 @@ class ImagesController < ApplicationController
   def edit
     @image = Image.find(params[:id])
     @shops = Shop.all
+
+    if not @image.user_id == current_user.id
+      redirect_to request.referer
+    end
   end
 
   # POST /images
@@ -65,6 +69,10 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
 
+    if not @image.user_id == current_user.id
+      redirect_to request.referer
+    end
+
     respond_to do |format|
       if @image.update_attributes(params[:image])
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
@@ -80,11 +88,11 @@ class ImagesController < ApplicationController
   # DELETE /images/1.json
   def destroy
     @image = Image.find(params[:id])
-    @image.destroy
 
-    respond_to do |format|
-      format.html { redirect_to images_url }
-      format.json { head :no_content }
+    if @image.user_id == current_user.id
+      @image.destroy
     end
+
+    redirect_to images_url
   end
 end

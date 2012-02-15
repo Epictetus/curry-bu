@@ -4,13 +4,16 @@
     <h1><%= image.ate_at %></h1>
   </div>
   <div class="span6">
-    <h2><%= image.shop.name %></h1>
+    <h2><%= image.title %>(<%= image.shop.name %>)</h1>
     <%= image_tag image.image_url.to_s %><br />
     <%= image.user.name %> - <%= image.comment %>
   </div>
   <div class="span3">
     <%= link_to 'Show', image %><br />
-    <%= link_to 'Edit', edit_image_path(image) %>
+    <% if image.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_image_path(image) %><br />
+      <%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %>
+    <% end %>
   </div>
 </div>
 <% end %>
