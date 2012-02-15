@@ -5,7 +5,8 @@
     <th>Title</th>
     <th>Comment</th>
     <th>Image</th>
-    <th>Activity</th>
+    <th>AteAt</th>
+    <th>Shop</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +17,8 @@
     <td><%= image.title %></td>
     <td><%= image.comment %></td>
     <td><%= image.image %></td>
-    <td><%= image.activity %></td>
+    <td><%= image.ate_at %></td>
+    <td><%= image.shop.name %></td>
     <td><%= link_to 'Show', image %></td>
     <td><%= link_to 'Edit', edit_image_path(image) %></td>
     <td><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></td>

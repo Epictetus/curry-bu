@@ -24,8 +24,12 @@
     <%= f.file_field :image %>
   </div>
   <div class="field">
-    <%= f.label :activity %><br />
-    <%= f.collection_select :activity_id, @activities, :id, :name, include_blank: "選択してください" %>
+    <%= f.label :ate_at %><br />
+    <%= f.date_select :ate_at %>
+  </div>
+  <div class="field">
+    <%= f.label :shop %><br />
+    <%= f.collection_select :shop_id, @shops, :id, :name, include_blank: "選択してください" %>
   </div>
   <div class="actions">
     <%= f.submit %>

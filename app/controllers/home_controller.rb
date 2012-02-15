@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @activities = Activity.all
+    @images = Image.order("ate_at DESC").all
   end
 end

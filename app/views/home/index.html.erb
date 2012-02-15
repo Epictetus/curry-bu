@@ -1,24 +1,19 @@
-<% @activities.each do |activity| %>
+<% @images.each do |image| %>
 <div class="row">
   <div class="span3">
-    <h1><%= activity.ate_at %></h1>
+    <h1><%= image.ate_at %></h1>
   </div>
   <div class="span6">
-    <h2><%= activity.shop.name %> - <%= activity.name %></h1>
-    <% activity.images.each do |image| %>
-      <%= image_tag image.image_url.to_s %><br />
-      <%= image.title %>(<%= image.user.name %>)<br />
-      <%= image.comment %><br />
-    <% end %>
+    <h2><%= image.shop.name %></h1>
+    <%= image_tag image.image_url.to_s %><br />
   </div>
   <div class="span3">
     <dl>
-      <dt>この活動を作った人</dt>
-      <dd><%= activity.user.name %></dd>
-      <dt>参加した人たち</dt>
+      <dt>参加した活動</dt>
+      <dd>&nbsp;</dd>
     </dl>
-    <%= link_to 'Show', activity %><br />
-    <%= link_to 'Edit', edit_activity_path(activity) %>
+    <%= link_to 'Show', image %><br />
+    <%= link_to 'Edit', edit_image_path(image) %>
   </div>
 </div>
 <% end %>

@@ -29,7 +29,7 @@ class ImagesController < ApplicationController
   # GET /images/new.json
   def new
     @image = Image.new
-    @activities = Activity.all
+    @shops = Shop.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +40,7 @@ class ImagesController < ApplicationController
   # GET /images/1/edit
   def edit
     @image = Image.find(params[:id])
-    @activities = Activity.all
+    @shops = Shop.all
   end
 
   # POST /images
