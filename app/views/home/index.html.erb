@@ -6,6 +6,7 @@
   <div class="span6">
     <h2><%= image.shop.name %></h1>
     <%= image_tag image.image_url.to_s %><br />
+    <%= image.user.name %> - <%= image.comment %>
   </div>
   <div class="span3">
     <%= link_to 'Show', image %><br />
