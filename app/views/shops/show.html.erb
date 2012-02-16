@@ -5,5 +5,15 @@
   <%= @shop.name %>
 </p>
 
+<p>
+  <b>お店を登録した人:</b>
+  <%= @shop.create_user.name %>
+</p>
+
+<p>
+  <b>お店を更新した人:</b>
+  <%= @shop.update_user.name %>
+</p>
+
 <%= link_to 'Edit', edit_shop_path(@shop) %> |
 <%= link_to 'Back', shops_path %>
