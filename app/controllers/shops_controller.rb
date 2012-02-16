@@ -45,6 +45,8 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(params[:shop])
+    @shop.create_user_id = current_user.id
+    @shop.update_user_id = current_user.id
 
     respond_to do |format|
       if @shop.save
@@ -61,6 +63,7 @@ class ShopsController < ApplicationController
   # PUT /shops/1.json
   def update
     @shop = Shop.find(params[:id])
+    @shop.update_user_id = current_user.id
 
     respond_to do |format|
       if @shop.update_attributes(params[:shop])
