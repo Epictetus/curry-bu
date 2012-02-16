@@ -7,6 +7,7 @@
     <th>Image</th>
     <th>Ate at</th>
     <th>Shop</th>
+    <th>Price</th>
     <th>User</th>
     <th></th>
     <th></th>
@@ -20,6 +21,7 @@
     <td><%= item.image %></td>
     <td><%= item.ate_at %></td>
     <td><%= item.shop.name %></td>
+    <td><%= item.price %></td>
     <td><%= item.user.name %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>

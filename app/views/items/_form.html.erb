@@ -29,7 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :shop %><br />
-    <%= f.collection_select :shop_id, @shops, :id, :name, include_blank: "選択してください" %>
+    <%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: "選択してください" %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
   </div>
   <div class="actions">
     <%= f.submit %>
