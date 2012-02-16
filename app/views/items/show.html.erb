@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @item.title %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @item.comment %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @item.image_url.to_s %>
+</p>
+
+<p>
+  <b>Ate at:</b>
+  <%= @item.ate_at %>
+</p>
+
+<p>
+  <b>Shop:</b>
+  <%= @item.shop.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @item.user.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

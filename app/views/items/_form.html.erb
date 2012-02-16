@@ -1,0 +1,37 @@
+<%= form_for(@item, html: {multipart: true}) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :ate_at %><br />
+    <%= f.date_select :ate_at, use_month_numbers: true, end_year: Time.now.year %>
+  </div>
+  <div class="field">
+    <%= f.label :shop %><br />
+    <%= f.collection_select :shop_id, @shops, :id, :name, include_blank: "選択してください" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

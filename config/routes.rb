@@ -1,6 +1,6 @@
 Currybu::Application.routes.draw do
 
-  resources :images
+  resources :items
 
   resources :shops
 

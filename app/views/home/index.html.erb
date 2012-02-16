@@ -1,18 +1,18 @@
-<% @images.each do |image| %>
+<% @items.each do |item| %>
 <div class="row">
   <div class="span3">
-    <h1><%= image.ate_at %></h1>
+    <h1><%= item.ate_at %></h1>
   </div>
   <div class="span6">
-    <h2><%= image.title %>(<%= image.shop.name %>)</h1>
-    <%= image_tag image.image_url.to_s %><br />
-    <%= image.user.name %> - <%= image.comment %>
+    <h2><%= item.title %>(<%= item.shop.name %>)</h1>
+    <%= image_tag item.image_url.to_s %><br />
+    <%= item.user.name %> - <%= item.comment %>
   </div>
   <div class="span3">
-    <%= link_to 'Show', image %><br />
-    <% if image.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_image_path(image) %><br />
-      <%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %>
+    <%= link_to 'Show', item %><br />
+    <% if item.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_item_path(item) %><br />
+      <%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %>
     <% end %>
   </div>
 </div>
