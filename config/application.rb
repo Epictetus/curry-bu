@@ -55,5 +55,9 @@ module Currybu
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.action_view.field_error_proc = Proc.new do |html_error, instance|
+      %|<span class="inputError">#{html_error}</span>|.html_safe
+    end
   end
 end
