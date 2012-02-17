@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(:version => 20120216072050) do
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
 
   create_table "shops", :force => true do |t|
-    t.string   "name",                          :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "create_user_id", :default => 0, :null => false
-    t.integer  "update_user_id", :default => 0, :null => false
+    t.string   "name",           :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "create_user_id", :null => false
+    t.integer  "update_user_id", :null => false
   end
 
   create_table "users", :force => true do |t|
