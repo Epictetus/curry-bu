@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable
-  attr_accessible :name, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :password, :password_confirmation, :remember_me
 
-  validates :name,
+  validates :username,
     presence: true,
     uniqueness: true
 
