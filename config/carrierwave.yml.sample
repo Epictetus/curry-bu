@@ -1,0 +1,13 @@
+development:
+  storage: file
+
+test:
+  storage: file
+  enable_processing: false
+
+production:
+  storage: s3
+  access_key_id: "xxxxx"
+  secret_access_key: "xxxxx"
+  bucket: "bucket"
+  region: "ap-northeast-1"

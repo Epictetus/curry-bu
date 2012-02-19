@@ -19,4 +19,5 @@ gem 'twitter-bootstrap-rails', '2.0.2', :git => 'http://github.com/seyhunak/twit
 
 group :production do
   gem 'unicorn'
+  gem 'fog'
 end
