@@ -7,12 +7,12 @@
 
 <p>
   <b>お店を登録した人:</b>
-  <%= @shop.create_user.name %>
+  <%= @shop.create_user.username %>
 </p>
 
 <p>
   <b>お店を更新した人:</b>
-  <%= @shop.update_user.name %>
+  <%= @shop.update_user.username %>
 </p>
 
 <%= link_to 'Edit', edit_shop_path(@shop) %> |
