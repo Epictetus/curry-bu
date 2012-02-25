@@ -21,3 +21,8 @@ group :production do
   gem 'unicorn'
   gem 'fog'
 end
+
+group :deployment do
+  gem 'capistrano'
+  gem 'capistrano_colors'
+end
