@@ -1,11 +1,17 @@
+application = "curry"
+
+listen "/tmp/unicorn_#{application}.sock"
+pid "/tmp/unicorn_#{application}.pid"
+
 worker_processes 2
-
-listen '/tmp/unicorn_curry.sock'
-
-stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-
+timeout 30
 preload_app true
+
+if ENV['RAILS_ENV'] == 'production'
+  shared_path = "/var/www/#{application}/shared"
+  stderr_path = "#{shared_path}/log/unicorn.stderr.log"
+  stdout_path = "#{shared_path}/log/unicorn.stdout.log"
+end
 
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
