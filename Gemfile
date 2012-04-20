@@ -14,7 +14,7 @@ end
 gem 'jquery-rails', '2.0.0'
 
 gem 'devise', '2.0.1'
-gem 'carrierwave', '0.5.8'
+gem 'carrierwave', '0.6.1'
 gem 'twitter-bootstrap-rails', '2.0.2', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :production do
