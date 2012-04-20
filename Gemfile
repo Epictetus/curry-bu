@@ -25,4 +25,5 @@ end
 group :deployment do
   gem 'capistrano', '2.11.2'
   gem 'capistrano_colors', '0.5.5'
+  gem 'rvm-capistrano', '1.1.0'
 end
