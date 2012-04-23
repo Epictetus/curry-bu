@@ -11,7 +11,7 @@ describe HomeController do
 
     describe :response do
       subject { response }
-      it { should be_failure }
+      it { should be_success }
     end
   end
 end
