@@ -27,3 +27,7 @@ group :deployment do
   gem 'capistrano_colors', '0.5.5'
   gem 'rvm-capistrano', '1.1.0'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '2.9.0'
+end
