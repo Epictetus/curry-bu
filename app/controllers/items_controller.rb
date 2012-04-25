@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.order("ate_at DESC").all
+    @items = Item.ate_new.all
 
     respond_to do |format|
       format.html # index.html.erb
