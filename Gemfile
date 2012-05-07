@@ -8,7 +8,7 @@ gem 'carrierwave', '0.6.1'
 gem 'twitter-bootstrap-rails', '2.0.2', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -29,4 +29,5 @@ group :development, :test do
   gem 'guard-spork', '0.7.0'
   gem 'guard-rspec', '0.7.0'
   gem 'shoulda-matchers', '1.1.0'
+  gem 'capybara', '1.1.2'
 end
