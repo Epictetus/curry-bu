@@ -46,6 +46,18 @@ Spork.prefork do
     config.infer_base_class_for_anonymous_controllers = false
 
     config.formatter = 'Growl::RSpec::Formatter'
+
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :transaction
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
 
 end
