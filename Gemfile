@@ -31,4 +31,6 @@ group :development, :test do
   gem 'shoulda-matchers', '1.1.0'
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '3.2.0'
+  gem 'growl-rspec', '0.0.1'
+  gem 'database_cleaner', '0.7.2'
 end
