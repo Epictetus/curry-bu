@@ -1,25 +1,66 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="span3">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active"><%= link_to "アカウント", settings_account_path %></li>
+    </ul>
+  </div>
+  <div class="span9">
+    <h2>アカウント</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(@user, url: settings_account_path, html: { class: "form-horizontal", method: :put }) do |f| %>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
+      <% if @user.errors.any? %>
+        <div class="alert alert-block alert-error">
+          <a class="close">×</a>
+          <h4 class="alert-heading"><strong><%= pluralize(@user.errors.count, "error") %></strong> prohibited this item from being saved:</h4>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+      <fieldset>
+        <div class="control-group">
+          <%= f.label :username, "ユーザー名", class: "control-label" %>
+          <div class="controls">
+            <p><%= @user.username %></p>
+          </div>
+        </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+        <div class="control-group<%= @user.errors[:password].empty? ? '' : ' error' %>">
+          <%= f.label :password, "パスワード", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password %>
+            <p>パスワードを変更する場合のみ入力してください。</p>
+          </div>
+        </div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+        <div class="control-group<%= @user.errors[:password_confirmation].empty? ? '' : ' error' %>">
+          <%= f.label :password_confirmation, "パスワード(確認)", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+            <p>パスワードを変更する場合のみ入力してください。</p>
+          </div>
+        </div>
 
-<h3>Cancel my account</h3>
+        <div class="control-group<%= @user.errors[:current_password].empty? ? '' : ' error' %>">
+          <%= f.label :current_password, "現在のパスワード", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :current_password %>
+            <p>設定を変更するには現在のパスワードを入力してください。</p>
+          </div>
+        </div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+        <div class="form-actions">
+          <%= f.submit "変更を保存", class: "btn btn-primary" %>
+        </div>
+      <fieldset>
 
-<%= link_to "Back", :back %>
+    <% end %>
+
+    <p><%= link_to "アカウントを削除する", registration_path(@user), :confirm => "本当に削除しますか？", :method => :delete %></p>
+  </div>
+</div>

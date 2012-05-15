@@ -4,10 +4,11 @@ require 'spec_helper'
 describe "Shops" do
   before do
     login_as :user
-    Factory :shop
+
+    FactoryGirl.create :shop
   end
 
-  describe "GET /shops" do
+  describe "Shop list" do
     before do
       visit shops_path
     end
@@ -15,4 +16,5 @@ describe "Shops" do
     it { page.should have_content("Listing shops") }
     it { page.should have_content("test shop") }
   end
+
 end
