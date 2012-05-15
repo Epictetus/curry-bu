@@ -107,18 +107,18 @@ describe :routes do
   describe :users do
 
     # devise
-    describe "GET /users/sign_in" do
-      subject { { get: "/users/sign_in" } }
+    describe "GET /login" do
+      subject { { get: "/login" } }
       it { should route_to("devise/sessions#new") }
     end
 
-    describe "POST /users/sign_in" do
-      subject { { post: "/users/sign_in" } }
+    describe "POST /login" do
+      subject { { post: "/login" } }
       it { should route_to("devise/sessions#create") }
     end
 
-    describe "DELETE /users/sign_out" do
-      subject { { delete: "/users/sign_out" } }
+    describe "DELETE /logout" do
+      subject { { delete: "/logout" } }
       it { should route_to("devise/sessions#destroy") }
     end
 
