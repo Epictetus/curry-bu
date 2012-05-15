@@ -12,6 +12,20 @@ describe :routes do
 
   end
 
+  describe :settings do
+
+    describe "GET /settings/account" do
+      subject { { get: "/settings/account" } }
+      it { should route_to("registrations#edit") }
+    end
+
+    describe "PUT /settings/account" do
+      subject { { put: "/settings/account" } }
+      it { should route_to("registrations#update") }
+    end
+
+  end
+
   describe :shops do
 
     describe "GET /shops" do
