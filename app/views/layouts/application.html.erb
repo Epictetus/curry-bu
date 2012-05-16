@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <title>CurryBu</title>
@@ -49,14 +49,9 @@
                     <li><%= link_to "ログアウト", destroy_user_session_path, :method => 'delete' %></li>
                   </ul>
                 </li>
-                <% else %>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ログイン/新規登録<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "ログイン", new_user_session_path %></li>
-                    <li><%= link_to "新規登録", new_user_registration_path %></li>
-                  </ul>
-                </li>
+              <% else %>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+                <li><%= link_to "入部する", new_user_registration_path %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

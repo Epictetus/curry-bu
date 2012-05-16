@@ -1,18 +1,51 @@
-<h2>Sign up</h2>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: "well" }) do |f| %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <% if resource.errors.any? %>
+        <div class="alert alert-block alert-error">
+          <a class="close">×</a>
+          <h4 class="alert-heading"><strong><%= pluralize(resource.errors.count, "error") %></strong> prohibited this item from being saved:</h4>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
+          <ul>
+            <% resource.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+      <fieldset>
+        <h3>入部届</h3>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+        <hr />
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+        <div class="control-group">
+          <%= f.label :username, "ユーザー名", class: "control-label" %>
+          <div class="controls">
+            <p><%= f.text_field :username %></p>
+          </div>
+        </div>
 
-<%= render "links" %>
+        <div class="control-group<%= @user.errors[:password].empty? ? '' : ' error' %>">
+          <%= f.label :password, "パスワード", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password %>
+          </div>
+        </div>
+
+        <div class="control-group<%= @user.errors[:password_confirmation].empty? ? '' : ' error' %>">
+          <%= f.label :password_confirmation, "パスワード(確認)", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.submit "入部する", class: "btn btn-primary" %>
+        </div>
+      </fieldset>
+
+    <% end %>
+  </div>
+</div>
