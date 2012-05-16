@@ -6,7 +6,11 @@
   <div class="span6">
     <h2><%= item.title %>(<%= item.shop.name %>)</h1>
     <%= image_tag item.image_url.to_s %><br />
-    <%= item.user.username %> - <%= item.comment %>
+    <%= link_to item.user.username, user_path(item.user) %>
+    <% if item.comment %>
+      <br />
+      <%= simple_format item.comment %>
+    <% end %>
   </div>
   <div class="span3">
     <%= link_to 'Show', item %><br />

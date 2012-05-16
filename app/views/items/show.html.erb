@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <b>Comment:</b>
-  <%= @item.comment %>
+  <b>Image:</b>
+  <%= image_tag @item.image_url.to_s %>
 </p>
 
 <p>
-  <b>Image:</b>
-  <%= image_tag @item.image_url.to_s %>
+  <b>Comment:</b>
+  <%= simple_format @item.comment %>
 </p>
 
 <p>
