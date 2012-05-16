@@ -24,6 +24,11 @@ describe :routes do
       it { should route_to("registrations#update") }
     end
 
+    describe "DELETE /settings/account" do
+      subject { { delete: "/settings/account" } }
+      it { should route_to("registrations#destroy") }
+    end
+
   end
 
   describe :shops do
@@ -122,24 +127,14 @@ describe :routes do
       it { should route_to("devise/sessions#destroy") }
     end
 
-    describe "GET /users/sign_up" do
-      subject { { get: "/users/sign_up" } }
-      it { should route_to("devise/registrations#new") }
+    describe "GET /signup" do
+      subject { { get: "/signup" } }
+      it { should route_to("registrations#new") }
     end
 
-    describe "POST /users" do
-      subject { { post: "/users" } }
-      it { should route_to("devise/registrations#create") }
-    end
-
-    describe "GET /users/edit" do
-      subject { { get: "/users/edit" } }
-      it { should route_to("devise/registrations#edit") }
-    end
-
-    describe "PUT /users" do
-      subject { { put: "/users" } }
-      it { should route_to("devise/registrations#update") }
+    describe "POST /signup" do
+      subject { { post: "/signup" } }
+      it { should route_to("registrations#create") }
     end
 
     # application
