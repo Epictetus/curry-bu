@@ -4,11 +4,14 @@ config = YAML.load(File.open(config_file))[Rails.env]
 # FIXME
 if config["storage"] == "s3"
   CarrierWave.configure do |conf|
-    conf.storage = :s3
-    conf.s3_access_key_id = config["access_key_id"]
-    conf.s3_secret_access_key = config["secret_access_key"]
-    conf.s3_bucket = config["bucket"]
-    conf.s3_region = config["region"]
+    conf.storage = :fog
+    conf.fog_credentials = {
+      provider: "AWS",
+      aws_access_key_id: config["access_key_id"],
+      aws_secret_access_key: config["secret_access_key"],
+      region: config["region"],
+    }
+    conf.fog_directory = config["bucket"]
   end
 elsif config["storage"] == "file"
   CarrierWave.configure do |conf|
