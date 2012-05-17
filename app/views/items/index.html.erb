@@ -22,7 +22,7 @@
     <td><%= item.ate_at %></td>
     <td><%= item.shop.name %></td>
     <td><%= item.price %></td>
-    <td><%= item.user.username %></td>
+    <td><%= item.user.login_name %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td>

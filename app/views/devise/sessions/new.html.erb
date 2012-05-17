@@ -7,9 +7,9 @@
 
         <hr />
         <div class="control-group">
-          <%= f.label :username, 'ユーザー名', class: "control-label" %>
+          <%= f.label :login_name, 'ユーザー名', class: "control-label" %>
           <div class="controls">
-            <%= f.text_field :username, class: "span3" %>
+            <%= f.text_field :login_name, class: "span3" %>
           </div>
         </div>
 
@@ -18,15 +18,18 @@
           <div class="controls">
             <%= f.password_field :password %>
           </div>
+        </div>
 
-          <% if devise_mapping.rememberable? -%>
-            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-          <% end -%>
+        <div class="control-group">
+          <div class="controls">
+            <%= f.label :remember_me, f.check_box(:remember_me) + "ログインしたままにする", class: "checkbox" %>
+          </div>
+        </div>
 
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
 
-          <p>入部はまだですか？ <strong><%= link_to "入部しましょう！", new_user_registration_path %></strong></p>
-        </fieldset>
-      <% end %>
-    </div>
+        <p>入部はまだですか？ <strong><%= link_to "入部しましょう！", new_user_registration_path %></strong></p>
+      </fieldset>
+    <% end %>
   </div>
+</div>
