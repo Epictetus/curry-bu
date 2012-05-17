@@ -1,9 +1,9 @@
 # coding: utf-8
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable
-  attr_accessible :username, :password, :password_confirmation, :remember_me
+  attr_accessible :login_name, :password, :password_confirmation, :remember_me
 
-  validates :username,
+  validates :login_name,
     presence: true,
     uniqueness: true,
     length: { maximum: 40 },

@@ -1,7 +1,7 @@
 # coding: utf-8
 class RegistrationsController < Devise::RegistrationsController
   def update
-    params[:user].delete(:username)
+    params[:user].delete(:login_name)
     super
   end
 
