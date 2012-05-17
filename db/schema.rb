@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516013344) do
+ActiveRecord::Schema.define(:version => 20120517010502) do
 
   create_table "items", :force => true do |t|
     t.string   "title",      :null => false
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(:version => 20120516013344) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "encrypted_password", :default => "", :null => false
+    t.string   "encrypted_password",  :default => "", :null => false
     t.string   "login_name"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.datetime "remember_created_at"
   end
 
   add_index "users", ["login_name"], :name => "index_users_on_login_name", :unique => true
