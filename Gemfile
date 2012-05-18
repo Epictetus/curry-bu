@@ -5,6 +5,8 @@ gem 'mysql2', '0.3.11'
 gem 'jquery-rails', '2.0.0'
 gem 'devise', '2.0.1'
 gem 'carrierwave', '0.6.1'
+gem 'rails3_acts_as_paranoid', '0.2.4'
+
 gem 'twitter-bootstrap-rails', '2.0.2', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :assets do
