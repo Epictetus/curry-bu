@@ -15,6 +15,6 @@ describe Item do
   end
 
   describe "Scope" do
-    it { Item.should respond_to :ate_new }
+    it { Item.should respond_to :new_uploads }
   end
 end

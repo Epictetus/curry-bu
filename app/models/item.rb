@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
   validates :shop, presence: true
   validates :price, numericality: { only_integer: true, allow_nil: true }
 
-  scope :ate_new, order("ate_at DESC")
+  scope :new_uploads, order("id DESC")
 
   mount_uploader :image, ItemUploader
 

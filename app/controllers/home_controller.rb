@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @items = Item.ate_new.all
+    @items = Item.new_uploads.all
   end
 end
