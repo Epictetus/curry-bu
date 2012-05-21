@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.ate_new.all
+    @items = Item.new_uploads.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,7 +84,6 @@ class ItemsController < ApplicationController
   # DELETE /items/1.json
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
 
     if @item.user_id == current_user.id
       @item.destroy
