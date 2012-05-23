@@ -1,4 +1,6 @@
 Currybu::Application.routes.draw do
+  resources :item_comments
+
   resources :items
 
   resources :shops

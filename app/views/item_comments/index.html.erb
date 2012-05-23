@@ -1,0 +1,29 @@
+<h1>Listing item_comments</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Comment</th>
+    <th>User</th>
+    <th>Deleted at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @item_comments.each do |item_comment| %>
+  <tr>
+    <td><%= item_comment.item %></td>
+    <td><%= item_comment.comment %></td>
+    <td><%= item_comment.user %></td>
+    <td><%= item_comment.deleted_at %></td>
+    <td><%= link_to 'Show', item_comment %></td>
+    <td><%= link_to 'Edit', edit_item_comment_path(item_comment) %></td>
+    <td><%= link_to 'Destroy', item_comment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item comment', new_item_comment_path %>

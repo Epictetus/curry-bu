@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @item_comment.item %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @item_comment.comment %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @item_comment.user %>
+</p>
+
+<p>
+  <b>Deleted at:</b>
+  <%= @item_comment.deleted_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_comment_path(@item_comment) %> |
+<%= link_to 'Back', item_comments_path %>
