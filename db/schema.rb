@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518011435) do
+ActiveRecord::Schema.define(:version => 20120523005931) do
 
   create_table "items", :force => true do |t|
     t.string   "title",      :null => false
@@ -40,7 +40,9 @@ ActiveRecord::Schema.define(:version => 20120518011435) do
     t.datetime "deleted_at"
   end
 
+  add_index "shops", ["create_user_id"], :name => "shops_create_user_id_fk"
   add_index "shops", ["deleted_at"], :name => "index_shops_on_deleted_at"
+  add_index "shops", ["update_user_id"], :name => "shops_update_user_id_fk"
 
   create_table "users", :force => true do |t|
     t.string   "encrypted_password",  :default => "", :null => false
@@ -53,5 +55,11 @@ ActiveRecord::Schema.define(:version => 20120518011435) do
 
   add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"
   add_index "users", ["login_name"], :name => "index_users_on_login_name", :unique => true
+
+  add_foreign_key "items", "shops", :name => "items_shop_id_fk"
+  add_foreign_key "items", "users", :name => "items_user_id_fk"
+
+  add_foreign_key "shops", "users", :name => "shops_create_user_id_fk", :column => "create_user_id"
+  add_foreign_key "shops", "users", :name => "shops_update_user_id_fk", :column => "update_user_id"
 
 end
