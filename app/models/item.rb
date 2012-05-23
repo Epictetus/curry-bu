@@ -7,8 +7,9 @@ class Item < ActiveRecord::Base
   validates :title, presence: true
   validates :image, presence: true
   validates :ate_at, presence: true
-  validates :shop, presence: true
   validates :price, numericality: { only_integer: true, allow_nil: true }
+  validates :user_id, presence: true
+  validates :shop_id, presence: true
 
   scope :new_uploads, order("id DESC")
 

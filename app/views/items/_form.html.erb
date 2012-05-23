@@ -65,7 +65,7 @@
         <legend>お店について</legend>
 
         <div class="control-group">
-          <%= f.label :shop, "お店" %>
+          <%= f.label :shop_id, "お店" %>
           <div class="controls">
             <%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: "選んでください" %>
           </div>
