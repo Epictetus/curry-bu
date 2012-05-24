@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523005931) do
+ActiveRecord::Schema.define(:version => 20120523011607) do
+
+  create_table "item_comments", :force => true do |t|
+    t.integer  "item_id",    :null => false
+    t.integer  "user_id",    :null => false
+    t.text     "comment",    :null => false
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "item_comments", ["item_id"], :name => "item_comments_item_id_fk"
+  add_index "item_comments", ["user_id"], :name => "item_comments_user_id_fk"
 
   create_table "items", :force => true do |t|
     t.string   "title",      :null => false
@@ -55,6 +67,9 @@ ActiveRecord::Schema.define(:version => 20120523005931) do
 
   add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"
   add_index "users", ["login_name"], :name => "index_users_on_login_name", :unique => true
+
+  add_foreign_key "item_comments", "items", :name => "item_comments_item_id_fk"
+  add_foreign_key "item_comments", "users", :name => "item_comments_user_id_fk"
 
   add_foreign_key "items", "shops", :name => "items_shop_id_fk"
   add_foreign_key "items", "users", :name => "items_user_id_fk"

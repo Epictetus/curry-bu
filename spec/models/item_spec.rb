@@ -4,6 +4,7 @@ describe Item do
   describe "Associations" do
     it { should belong_to(:user) }
     it { should belong_to(:shop) }
+    it { should have_many(:item_comments) }
   end
 
   describe "Valiadtion" do

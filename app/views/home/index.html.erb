@@ -1,23 +1,25 @@
 <% @items.each do |item| %>
 <div class="row">
-  <div class="span3">
-    <h1><%= item.ate_at %></h1>
-  </div>
-  <div class="span6">
-    <h2><%= item.title %>(<%= item.shop.name %>)</h1>
-    <%= image_tag item.image_url.to_s %><br />
-    <%= link_to item.user.login_name, user_path(item.user) %>
-    <% if item.comment %>
-      <br />
-      <%= simple_format item.comment %>
-    <% end %>
+  <div class="offset3 span6">
+    <div class="thumbnail">
+      <%= image_tag item.image_url.to_s %>
+    </div>
   </div>
   <div class="span3">
-    <%= link_to 'Show', item %><br />
-    <% if user_signed_in? and item.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_item_path(item) %><br />
-      <%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %>
+    <h2><%= link_to item.title, item_path(item) %></h2>
+    <i class="icon-home"></i><strong><%= link_to item.shop.name, shop_path(item.shop) %></strong><br />
+    <i class="icon-shopping-cart"></i><%= item.price %>円<br />
+    <i class="icon-user"></i><%= link_to item.user.login_name, user_path(item.user) %><br />
+    <i class="icon-calendar"></i><%= item.ate_at.strftime("%Y/%m/%d") %><br />
+    <i class="icon-upload"></i><%= item.created_at.strftime("%Y/%m/%d %H:%M") %><br />
+    <i class="icon-comment"></i><%= link_to item.item_comments.count, item_path(item) %><br />
+
+    <% if item.user == current_user %>
+      <hr />
+      <i class="icon-edit"></i><%= link_to '編集する', edit_item_path(item) %><br />
+      <i class="icon-remove"></i><%= link_to '削除する', item_path(item), method: :delete, confirm: "削除しますか？" %>
     <% end %>
   </div>
 </div>
+<br />
 <% end %>

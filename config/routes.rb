@@ -1,5 +1,8 @@
 Currybu::Application.routes.draw do
-  resources :items
+
+  resources :items do
+    resources :item_comments, path: "comments", only: [ :create, :destroy ]
+  end
 
   resources :shops
 
