@@ -28,7 +28,7 @@
         <strong><i class="icon-user"></i><%= link_to comment.user.login_name, user_path(comment.user) %></strong>&nbsp;<span class="comment-date"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></span><br />
         <%= simple_format comment.comment %>
         <% if comment.user == current_user %>
-          <i class="icon-remove"></i><%= link_to '削除する', item_item_comment_path(@item, comment), method: :delete, confirm: "削除しますか？" %>
+          <i class="icon-remove"></i><%= link_to '削除する', [@item, comment], method: :delete, confirm: "削除しますか？" %>
         <% end %>
         <hr />
       <% end %>
@@ -37,7 +37,19 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <%= form_for ItemComment.new, url: item_item_comments_path(@item) do |f| %>
+      <%= form_for [@item, (@item_comment || ItemComment.new)] do |f| %>
+        <% if @item_comment and @item_comment.errors.any? %>
+          <div class="alert alert-block alert-error">
+            <a class="close">×</a>
+            <h4 class="alert-heading"><strong><%= pluralize(@item_comment.errors.count, "error") %></strong> prohibited this item from being saved:</h4>
+
+            <ul>
+              <% @item_comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         <%= f.text_area :comment, {rows: 5, style: "width: 90%;"} %>
         <%= f.submit "コメントする", disable_with: "登録中...", class: "btn btn-primary btn-small" %>
       <% end %>

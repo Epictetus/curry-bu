@@ -6,7 +6,8 @@ class ItemCommentsController < ApplicationController
   # POST /item_comments.json
   def create
     @item = Item.find(params[:item_id])
-    @item_comment = @item.item_comments.new params[:item_comment]
+    @item_comment = ItemComment.new params[:item_comment]
+    @item_comment.item = @item
     @item_comment.user = current_user
 
     respond_to do |format|
@@ -14,7 +15,7 @@ class ItemCommentsController < ApplicationController
         format.html { redirect_to @item, notice: 'コメントを登録しました。' }
         format.json { render json: @item, status: :created, location: @item_comment }
       else
-        format.html { render action: @item }
+        format.html { render template: 'items/show' }
         format.json { render json: @item_comment.errors, status: :unprocessable_entity }
       end
     end
