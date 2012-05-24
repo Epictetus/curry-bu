@@ -1,5 +1,7 @@
 # coding: utf-8
 class ItemCommentsController < ApplicationController
+  before_filter :authenticate_user!
+
   # POST /item_comments
   # POST /item_comments.json
   def create
