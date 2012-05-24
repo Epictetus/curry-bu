@@ -1,69 +1,18 @@
+# coding: utf-8
 class ItemCommentsController < ApplicationController
-  # GET /item_comments
-  # GET /item_comments.json
-  def index
-    @item_comments = ItemComment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @item_comments }
-    end
-  end
-
-  # GET /item_comments/1
-  # GET /item_comments/1.json
-  def show
-    @item_comment = ItemComment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @item_comment }
-    end
-  end
-
-  # GET /item_comments/new
-  # GET /item_comments/new.json
-  def new
-    @item_comment = ItemComment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item_comment }
-    end
-  end
-
-  # GET /item_comments/1/edit
-  def edit
-    @item_comment = ItemComment.find(params[:id])
-  end
-
   # POST /item_comments
   # POST /item_comments.json
   def create
-    @item_comment = ItemComment.new(params[:item_comment])
+    @item = Item.find(params[:item_id])
+    @item_comment = @item.item_comments.new params[:item_comment]
+    @item_comment.user = current_user
 
     respond_to do |format|
       if @item_comment.save
-        format.html { redirect_to @item_comment, notice: 'Item comment was successfully created.' }
-        format.json { render json: @item_comment, status: :created, location: @item_comment }
+        format.html { redirect_to @item, notice: 'コメントを登録しました。' }
+        format.json { render json: @item, status: :created, location: @item_comment }
       else
-        format.html { render action: "new" }
-        format.json { render json: @item_comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /item_comments/1
-  # PUT /item_comments/1.json
-  def update
-    @item_comment = ItemComment.find(params[:id])
-
-    respond_to do |format|
-      if @item_comment.update_attributes(params[:item_comment])
-        format.html { redirect_to @item_comment, notice: 'Item comment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
+        format.html { render action: @item }
         format.json { render json: @item_comment.errors, status: :unprocessable_entity }
       end
     end
@@ -72,11 +21,12 @@ class ItemCommentsController < ApplicationController
   # DELETE /item_comments/1
   # DELETE /item_comments/1.json
   def destroy
-    @item_comment = ItemComment.find(params[:id])
-    @item_comment.destroy
+    @item = Item.find(params[:item_id])
+    item_comment = @item.item_comments.find(params[:id])
+    item_comment.destroy if item_comment.user == current_user
 
     respond_to do |format|
-      format.html { redirect_to item_comments_url }
+      format.html { redirect_to @item }
       format.json { head :no_content }
     end
   end

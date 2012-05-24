@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
   belongs_to :user
   belongs_to :shop
 
+  has_many :item_comments
+
   validates :title, presence: true
   validates :image, presence: true
   validates :ate_at, presence: true

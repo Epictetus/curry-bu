@@ -107,6 +107,20 @@ describe :routes do
       it { should route_to("items#destroy", id: '1') }
     end
 
+    describe :item_comments do
+
+      describe "POST /items/1/comments" do
+        subject { { post: "/items/1/comments" } }
+        it { should route_to("item_comments#create", item_id: '1') }
+      end
+
+      describe "DELETE /items/1/comments/1" do
+        subject { { delete: "/items/1/comments/1" } }
+        it { should route_to("item_comments#destroy", item_id: '1', id: '1') }
+      end
+
+    end
+
   end
 
   describe :users do
