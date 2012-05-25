@@ -5,7 +5,7 @@ class Shop < ActiveRecord::Base
 
   validates :name,
     presence: true,
-    uniqueness: true
+    uniqueness: { scope: :deleted_at }
 
   validates :create_user_id, presence: true
   validates :update_user_id, presence: true

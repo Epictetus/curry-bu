@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   validates :login_name,
     presence: true,
-    uniqueness: true,
+    uniqueness: { scope: :deleted_at },
     length: { maximum: 40 },
     format: { with: /^[0-9A-Za-z]+/ , message: "は半角英数字で入力してください。" }
 
