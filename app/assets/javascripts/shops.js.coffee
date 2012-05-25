@@ -1,4 +1,4 @@
 jQuery ->
-  ()->
-    $container = $('.thumbnails')
-    $container.imagesLoaded $container.masonry itemSelector : '.span3'
+  $container = $('.thumbnails')
+  $container.imagesLoaded ->
+    $container.masonry itemSelector : '.span3'
