@@ -1,0 +1,62 @@
+.row
+  .span7
+    .thumbnail
+      = image_tag @item.image_url.to_s
+  .span5
+    - if @item.user == current_user
+      %i.icon-edit
+      = link_to '編集する', edit_item_path(@item)
+      %i.icon-remove
+      = link_to '削除する', item_path(@item), method: :delete, confirm: "削除しますか？"
+    %h2= @item.title
+    %i.icon-home
+    %strong= link_to @item.shop.name, shop_path(@item.shop)
+    %br/
+    %i.icon-shopping-cart
+    = "#{@item.price}円"
+    %br/
+    %i.icon-user
+    = link_to @item.user.login_name, user_path(@item.user)
+    %br/
+    %i.icon-calendar
+    = @item.ate_at.strftime("%Y/%m/%d")
+    %br/
+    - if @item.comment
+      %i.icon-eye-open
+      = simple_format @item.comment
+    %hr/
+    %i.icon-comment
+    コメント
+    %br/
+
+    - if @item.item_comments.present?
+      - @item.item_comments.each do |comment|
+        %strong
+          %i.icon-user
+          = link_to comment.user.login_name, user_path(comment.user)
+        \ 
+        %span.comment-date= comment.created_at.strftime("%Y/%m/%d %H:%M")
+        %br/
+        = simple_format comment.comment
+        - if comment.user == current_user
+          %i.icon-remove
+          = link_to '削除する', [@item, comment], method: :delete, confirm: "削除しますか？"
+        %hr/
+    - else
+      コメントはありません。
+      %br/
+    - if user_signed_in?
+      = form_for [@item, (@item_comment || ItemComment.new)] do |f|
+        - if @item_comment and @item_comment.errors.any?
+          .alert.alert-block.alert-error
+            %h4.alert-heading
+              %strong= pluralize(@item_comment.errors.count, "error")
+              prohibited this item from being saved:
+            %ul
+              - @item_comment.errors.full_messages.each do |msg|
+                %li= msg
+        = f.text_area :comment, {rows: 5, style: "width: 90%;"}
+        = f.submit "コメントする", disable_with: "登録中...", class: "btn btn-primary btn-small"
+    - else
+      = link_to "ログイン", new_user_session_path
+      してコメントしましょう！
