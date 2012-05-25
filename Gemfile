@@ -2,9 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem 'mysql2', '0.3.11'
+
 gem 'jquery-rails', '2.0.0'
+gem 'haml-rails', '0.3.4'
+
 gem 'devise', '2.0.1'
 gem 'carrierwave', '0.6.1'
+
 gem 'rails3_acts_as_paranoid', '0.2.4'
 gem 'foreigner', '1.1.6'
 

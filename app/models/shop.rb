@@ -1,6 +1,8 @@
 class Shop < ActiveRecord::Base
   acts_as_paranoid
 
+  has_many :items
+
   validates :name,
     presence: true,
     uniqueness: true
