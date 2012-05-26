@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   devise :database_authenticatable, :registerable, :rememberable
-  attr_accessible :login_name, :password, :password_confirmation, :remember_me
 
   validates :login_name,
     presence: true,
@@ -17,4 +16,6 @@ class User < ActiveRecord::Base
 
   validates :password_confirmation,
     presence: true
+
+  attr_accessible :login_name, :password, :password_confirmation, :remember_me
 end
