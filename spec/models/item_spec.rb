@@ -18,5 +18,6 @@ describe Item do
 
   describe "Scope" do
     it { Item.should respond_to :new_uploads }
+    it { Item.should respond_to :exclude }
   end
 end

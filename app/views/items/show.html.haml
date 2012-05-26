@@ -60,3 +60,30 @@
     - else
       = link_to "ログイン", new_user_session_path
       してコメントしましょう！
+%hr/
+.row
+  .span6
+    %h3
+      %i.icon-user
+      = link_to 'ユーザーの投稿 >>', @item.user
+    - if @item.user.items.exclude(@item).new_uploads.limit(3).present?
+      %ul{ class: "thumbnails" }
+        - @item.user.items.exclude(@item).new_uploads.limit(3).each do |item|
+          %li{ class: "span2" }
+            .thumbnail
+              = link_to (image_tag item.image_url.to_s), item
+    - else
+      %p 他の投稿はありません。
+
+  .span6
+    %h3
+      %i.icon-home
+      = link_to 'お店の投稿 >>', @item.shop
+    - if @item.shop.items.exclude(@item).new_uploads.limit(3).present?
+      %ul{ class: "thumbnails" }
+        - @item.shop.items.exclude(@item).new_uploads.limit(3).each do |item|
+          %li{ class: "span2" }
+            .thumbnail
+              = link_to (image_tag item.image_url.to_s), item
+    - else
+      %p 他の投稿はありません。

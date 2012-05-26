@@ -14,6 +14,7 @@ class Item < ActiveRecord::Base
   validates :shop_id, presence: true
 
   scope :new_uploads, order("id DESC")
+  scope :exclude, lambda { |item| where("id != ?", item) }
 
   mount_uploader :image, ItemUploader
 

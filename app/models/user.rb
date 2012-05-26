@@ -2,6 +2,8 @@
 class User < ActiveRecord::Base
   acts_as_paranoid
 
+  has_many :items
+
   devise :database_authenticatable, :registerable, :rememberable
 
   validates :login_name,
