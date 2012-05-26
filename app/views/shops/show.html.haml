@@ -10,7 +10,7 @@
   .span9
     - if @shop.items
       %ul{ class: "thumbnails" }
-        - @shop.items.each do |item|
+        - @shop.items.new_uploads.each do |item|
           %li{ class: "span3" }
             .thumbnail
               = image_tag item.image_url.to_s

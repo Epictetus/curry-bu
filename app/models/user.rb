@@ -2,12 +2,13 @@
 class User < ActiveRecord::Base
   acts_as_paranoid
 
+  has_many :items
+
   devise :database_authenticatable, :registerable, :rememberable
-  attr_accessible :login_name, :password, :password_confirmation, :remember_me
 
   validates :login_name,
     presence: true,
-    uniqueness: true,
+    uniqueness: { scope: :deleted_at },
     length: { maximum: 40 },
     format: { with: /^[0-9A-Za-z]+/ , message: "は半角英数字で入力してください。" }
 
@@ -17,4 +18,6 @@ class User < ActiveRecord::Base
 
   validates :password_confirmation,
     presence: true
+
+  attr_accessible :login_name, :password, :password_confirmation, :remember_me
 end
