@@ -2,7 +2,7 @@
 <div class="row">
   <div class="offset3 span6">
     <div class="thumbnail">
-      <%= image_tag item.image_url.to_s %>
+      <%= link_to (image_tag item.image_url.to_s), item %>
     </div>
   </div>
   <div class="span3">
