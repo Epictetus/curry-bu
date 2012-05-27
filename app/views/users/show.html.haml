@@ -1,23 +1,20 @@
 .row
   .span3
-    %h2= @shop.name
-    %i.icon-user
-    = @shop.create_user.login_name
-    %br/
+    %h2= @user.login_name
     %i.icon-calendar
-    = @shop.created_at.strftime("%Y/%m/%d")
+    = @user.created_at.strftime("%Y/%m/%d")
 
   .span9
-    - if @shop.items
+    - if @user.items
       %ul{ class: "thumbnails" }
-        - @shop.items.new_uploads.each do |item|
+        - @user.items.new_uploads.each do |item|
           %li{ class: "span3" }
             .thumbnail
               = link_to (image_tag item.image_url.to_s), item
               .caption
                 %h5= link_to item.title, item
-                %i.icon-user
-                = link_to item.user.login_name, item.user
+                %i.icon-home
+                = link_to item.shop.name, item.shop
                 %br/
                 %i.icon-calendar
                 = item.ate_at.strftime("%Y/%m/%d")
