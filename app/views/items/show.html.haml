@@ -10,13 +10,13 @@
       = link_to '削除する', item_path(@item), method: :delete, confirm: "削除しますか？"
     %h2= @item.title
     %i.icon-home
-    %strong= link_to @item.shop.name, shop_path(@item.shop)
+    %strong= link_to @item.shop.name, @item.shop
+    %br/
+    %i.icon-user
+    = link_to @item.user.login_name, @item.user
     %br/
     %i.icon-shopping-cart
     = "#{@item.price}円"
-    %br/
-    %i.icon-user
-    = link_to @item.user.login_name, user_path(@item.user)
     %br/
     %i.icon-calendar
     = @item.ate_at.strftime("%Y/%m/%d")

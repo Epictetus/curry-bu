@@ -8,8 +8,8 @@
   <div class="span3">
     <h2><%= link_to item.title, item_path(item) %></h2>
     <i class="icon-home"></i><strong><%= link_to item.shop.name, shop_path(item.shop) %></strong><br />
-    <i class="icon-shopping-cart"></i><%= item.price %>円<br />
     <i class="icon-user"></i><%= link_to item.user.login_name, user_path(item.user) %><br />
+    <i class="icon-shopping-cart"></i><%= item.price %>円<br />
     <i class="icon-calendar"></i><%= item.ate_at.strftime("%Y/%m/%d") %><br />
     <i class="icon-upload"></i><%= item.created_at.strftime("%Y/%m/%d %H:%M") %><br />
     <i class="icon-comment"></i><%= link_to item.item_comments.count, item_path(item) %><br />
