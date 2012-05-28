@@ -36,6 +36,7 @@
                     = current_user.login_name
                     %b.caret
                   %ul.dropdown-menu
+                    %li= link_to "自分の画像", current_user
                     %li= link_to "設定", settings_account_path
                     %li= link_to "ログアウト", destroy_user_session_path, method: 'delete'
               - else
