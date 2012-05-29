@@ -1,0 +1,39 @@
+.row
+  .span3
+    %ul.nav.nav-pills.nav-stacked
+      %li.active= link_to "アカウント", settings_account_path
+      %li= link_to "メールアドレス", settings_mail_path
+  .span9
+    %h2 アカウント
+    = form_for(@user, url: settings_account_path, html: { class: "form-horizontal", method: :put }) do |f|
+      - if @user.errors.any?
+        .alert.alert-block.alert-error
+          %h4.alert-heading
+            %strong= pluralize(@user.errors.count, "error")
+            prohibited this item from being saved:
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+      %fieldset
+        %div{class: "control-group#{@user.errors[:login_name].empty? ? '' : ' error'}"}
+          = f.label :login_name, "ユーザー名", class: "control-label"
+          .controls
+            %p= @user.login_name
+        %div{:class => "control-group#{@user.errors[:password].empty? ? '' : ' error'}"}
+          = f.label :password, "パスワード", class: "control-label"
+          .controls
+            = f.password_field :password
+            %p パスワードを変更する場合のみ入力してください。
+        %div{:class => "control-group#{@user.errors[:password_confirmation].empty? ? '' : ' error'}"}
+          = f.label :password_confirmation, "パスワード(確認)", class: "control-label"
+          .controls
+            = f.password_field :password_confirmation
+            %p パスワードを変更する場合のみ入力してください。
+        %div{:class => "control-group#{@user.errors[:current_password].empty? ? '' : ' error'}"}
+          = f.label :current_password, "現在のパスワード", class: "control-label"
+          .controls
+            = f.password_field :current_password
+            %p 設定を変更するには現在のパスワードを入力してください。
+        .form-actions
+          = f.submit "変更を保存", class: "btn btn-primary"
+      %p= link_to "カレー部を退部する", settings_account_path, :confirm => "本当に退部しますか？", :method => :delete

@@ -18,6 +18,9 @@ Currybu::Application.routes.draw do
     delete '/settings/account' => 'registrations#destroy'
   end
 
+  get '/settings/mail' => 'settings#mail_edit'
+  put '/settings/mail' => 'settings#mail_update'
+
   resources :users, only: [:index, :show]
 
   root :to => 'home#index'

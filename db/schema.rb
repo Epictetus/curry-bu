@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527234618) do
+ActiveRecord::Schema.define(:version => 20120529010140) do
 
   create_table "item_comments", :force => true do |t|
     t.integer  "item_id",    :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20120527234618) do
   add_index "shops", ["update_user_id"], :name => "shops_update_user_id_fk"
 
   create_table "users", :force => true do |t|
+    t.string   "mail",                                :null => false
     t.string   "encrypted_password",  :default => "", :null => false
     t.string   "login_name"
     t.datetime "created_at",                          :null => false
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20120527234618) do
 
   add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"
   add_index "users", ["login_name", "deleted_at"], :name => "index_users_on_login_name_and_deleted_at", :unique => true
+  add_index "users", ["mail", "deleted_at"], :name => "index_users_on_mail_and_deleted_at", :unique => true
 
   add_foreign_key "item_comments", "items", :name => "item_comments_item_id_fk"
   add_foreign_key "item_comments", "users", :name => "item_comments_user_id_fk"
