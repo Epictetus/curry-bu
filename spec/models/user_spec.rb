@@ -10,6 +10,15 @@ describe User do
     it { should validate_presence_of(:login_name) }
     it { should validate_presence_of(:password) }
     it { should validate_presence_of(:password_confirmation) }
+
+    describe :login_name do
+      it { FactoryGirl.build(:user, login_name: "john").should be_valid }
+      it { FactoryGirl.build(:user, login_name: "1234").should be_valid }
+      it { FactoryGirl.build(:user, login_name: "123@").should_not be_valid }
+      it { FactoryGirl.build(:user, login_name: "@123").should_not be_valid }
+      it { FactoryGirl.build(:user, login_name: "@$%#").should_not be_valid }
+      it { FactoryGirl.build(:user, login_name: "ab c").should_not be_valid }
+    end
   end
 
   describe "LoginName" do
