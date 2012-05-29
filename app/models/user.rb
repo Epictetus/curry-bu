@@ -9,15 +9,31 @@ class User < ActiveRecord::Base
   validates :login_name,
     presence: true,
     uniqueness: { scope: :deleted_at },
-    length: { maximum: 40 },
-    format: { with: /^[0-9A-Za-z]+/ , message: "は半角英数字で入力してください。" }
+    length: { maximum: 40 }
+
+  validates :login_name,
+    format: { with: /^[0-9A-Za-z]+$/ , message: "は半角英数字で入力してください。" },
+    if: Proc.new { |a| a.login_name.present? }
+
+  validates :mail,
+    presence: true,
+    uniqueness: { scope: :deleted_at },
+    length: { maximum: 200 }
+
+  validates :mail,
+    email: { message: "正しいメールアドレスを入力してください。" },
+    if: Proc.new { |a| a.mail.present? }
 
   validates :password,
     presence: true,
-    confirmation: true
+    confirmation: true,
+    if: :password_required?
 
-  validates :password_confirmation,
-    presence: true
+  attr_accessible :mail, :login_name, :password, :password_confirmation, :remember_me
 
-  attr_accessible :login_name, :password, :password_confirmation, :remember_me
+  protected
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
+  end
 end

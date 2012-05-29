@@ -1,0 +1,32 @@
+.row
+  .span6.offset3
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "well" }) do |f|
+      - if resource.errors.any?
+        .alert.alert-block.alert-error
+          %h4.alert-heading
+            %strong= pluralize(resource.errors.count, "error")
+            prohibited this item from being saved:
+          %ul
+            - resource.errors.full_messages.each do |msg|
+              %li= msg
+      %fieldset
+        %h3 入部届
+        %hr/
+        %div{class: "control-group#{@user.errors[:login_name].empty? ? '' : ' error'}"}
+          = f.label :login_name, "ユーザー名", class: "control-label"
+          .controls
+            %p= f.text_field :login_name
+        %div{class: "control-group#{@user.errors[:mail].empty? ? '' : ' error'}"}
+          = f.label :mail, "メールアドレス", class: "control-label"
+          .controls
+            %p= f.text_field :mail
+        %div{class: "control-group#{@user.errors[:password].empty? ? '' : ' error'}"}
+          = f.label :password, "パスワード", class: "control-label"
+          .controls
+            = f.password_field :password
+        %div{class: "control-group#{@user.errors[:password_confirmation].empty? ? '' : ' error'}"}
+          = f.label :password_confirmation, "パスワード(確認)", class: "control-label"
+          .controls
+            = f.password_field :password_confirmation
+        .form-actions
+          = f.submit "入部する", class: "btn btn-primary"

@@ -29,6 +29,16 @@ describe :routes do
       it { should route_to("registrations#destroy") }
     end
 
+    describe "GET /settings/mail" do
+      subject { { get: "/settings/mail" } }
+      it { should route_to("settings#mail_edit") }
+    end
+
+    describe "PUT /settings/mail" do
+      subject { { put: "/settings/mail" } }
+      it { should route_to("settings#mail_update") }
+    end
+
   end
 
   describe :shops do

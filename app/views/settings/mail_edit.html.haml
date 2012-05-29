@@ -1,0 +1,23 @@
+.row
+  .span3
+    %ul.nav.nav-pills.nav-stacked
+      %li= link_to "アカウント", settings_account_path
+      %li.active= link_to "メールアドレス", settings_mail_path
+  .span9
+    %h2 メールアドレス
+    = form_for(@user, url: settings_mail_path, html: { class: "form-horizontal", method: :put }) do |f|
+      - if @user.errors.any?
+        .alert.alert-block.alert-error
+          %h4.alert-heading
+            %strong= pluralize(@user.errors.count, "error")
+            prohibited this item from being saved:
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+      %fieldset
+        %div{class: "control-group#{@user.errors[:mail].empty? ? '' : ' error'}"}
+          = f.label :mail, "メールアドレス", class: "control-label"
+          .controls
+            = f.text_field :mail
+        .form-actions
+          = f.submit "変更を保存", class: "btn btn-primary"
