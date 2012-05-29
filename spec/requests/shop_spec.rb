@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "Shops" do
   before do
-    login_as :user
+    create_logged_in_user
 
     FactoryGirl.create :shop
   end

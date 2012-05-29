@@ -1,27 +1,15 @@
 # coding: utf-8
+require 'spec_helper'
+include Warden::Test::Helpers
+
 module LoginMacros
-  def login_as role
-    @user = FactoryGirl.create(:user)
-    #@user = User.create(
-      #login_name: "testuser#{User.count}",
-      #password: "123456",
-      #password_confirmation: "123456",
-    #)
-
-    visit new_user_session_path
-    fill_in "user_login_name", with: @user.login_name
-    fill_in "user_password", with: "123456"
-    click_button "ログイン"
+  def create_logged_in_user
+    user = FactoryGirl.create(:user)
+    login(user)
+    user
   end
 
-  def login_with user
-    visit new_user_session_path
-    fill_in "user_login_name", with: user.login_name
-    fill_in "user_password", with: "123456"
-    click_button "ログイン"
-  end
-
-  def logout
-    click_link "ログアウト" rescue nil
+  def login(user)
+    login_as user, scope: :user
   end
 end
