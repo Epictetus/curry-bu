@@ -19,3 +19,6 @@
 /config/database.yml
 /config/carrierwave.yml
 /config/deploy.rb
+
+# tests
+/spec/support/uploads

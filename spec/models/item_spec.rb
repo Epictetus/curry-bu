@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 describe Item do
@@ -7,7 +8,7 @@ describe Item do
     it { should have_many(:item_comments) }
   end
 
-  describe "Valiadtion" do
+  describe "Validation" do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:image) }
     it { should validate_presence_of(:ate_at) }
@@ -19,5 +20,17 @@ describe Item do
   describe "Scope" do
     it { Item.should respond_to :new_uploads }
     it { Item.should respond_to :exclude }
+  end
+
+  describe "destroy" do
+    before do
+      @item = FactoryGirl.create(:item)
+      @item.destroy
+    end
+
+    it ("deleted_at がセットされていること") { @item.deleted?.should be_true  }
+    it "ファイルが削除されていないこと" do
+      File.exists?(@item.image.file.file.to_s).should be_true
+    end
   end
 end
