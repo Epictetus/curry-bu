@@ -2,7 +2,6 @@
 class SettingsController < ApplicationController
   def mail_edit
     @user = current_user
-    ap @user
   end
 
   def mail_update
