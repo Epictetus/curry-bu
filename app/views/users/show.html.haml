@@ -21,3 +21,5 @@
                 %br/
                 %i.icon-comment
                 = link_to item.item_comments.count, item
+                %i.icon-heart
+                = item.likes.count

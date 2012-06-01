@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$('span#toggle_like').click ->
+  url = $('span#toggle_like a[href]').attr('href')
+  $.ajax
+    type: 'GET'
+    url: url
+    dataType: 'json'
+    success: (data) ->
+      $('span#likes_count').text(data.count)
+      if data.status == 'create'
+        $('span#toggle_like a[href]').text('いいね！を取り消す')
+      else
+        $('span#toggle_like a[href]').text('いいね！')
+
+  false

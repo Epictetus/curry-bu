@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529010140) do
+ActiveRecord::Schema.define(:version => 20120531010252) do
 
   create_table "item_comments", :force => true do |t|
     t.integer  "item_id",    :null => false
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(:version => 20120529010140) do
   add_index "items", ["deleted_at"], :name => "index_items_on_deleted_at"
   add_index "items", ["shop_id"], :name => "index_items_on_shop_id"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id",                     :null => false
+    t.integer  "likeable_id",                 :null => false
+    t.string   "likeable_type", :limit => 20, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type", "user_id"], :name => "index_likes_on_likeable_id_and_likeable_type_and_user_id", :unique => true
+  add_index "likes", ["user_id"], :name => "likes_user_id_fk"
 
   create_table "shops", :force => true do |t|
     t.string   "name",           :null => false
@@ -76,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20120529010140) do
 
   add_foreign_key "items", "shops", :name => "items_shop_id_fk"
   add_foreign_key "items", "users", :name => "items_user_id_fk"
+
+  add_foreign_key "likes", "users", :name => "likes_user_id_fk"
 
   add_foreign_key "shops", "users", :name => "shops_create_user_id_fk", :column => "create_user_id"
   add_foreign_key "shops", "users", :name => "shops_update_user_id_fk", :column => "update_user_id"

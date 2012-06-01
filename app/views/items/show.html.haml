@@ -25,6 +25,15 @@
       %i.icon-eye-open
       = simple_format @item.comment
     %hr/
+    %i.icon-heart
+    %span#likes_count
+      = @likes_count
+    %span#toggle_like
+      = link_to (@like ? 'いいね！取り消す' : 'いいね！'), toggle_like_item_path(@item)
+    %br/
+    - @item.likes.each do |like|
+      = link_to like.user.login_name, like.user
+    %hr/
     %i.icon-comment
     コメント
     %br/

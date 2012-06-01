@@ -117,6 +117,11 @@ describe :routes do
       it { should route_to("items#destroy", id: '1') }
     end
 
+    describe "GET /items/1/toggle_like.json" do
+      subject { { get: "/items/1/toggle_like.json" } }
+      it { should route_to("items#toggle_like", id: '1') }
+    end
+
     describe :item_comments do
 
       describe "POST /items/1/comments" do
