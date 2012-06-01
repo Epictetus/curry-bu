@@ -19,6 +19,9 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
 
+    @likes_count = @item.likes.count
+    @like = @item.like_by_user(current_user)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
@@ -90,5 +93,13 @@ class ItemsController < ApplicationController
     end
 
     redirect_to items_url
+  end
+
+  def toggle_like
+    item = Item.find_by_id(params[:id])
+    return render json: {status: :error}, status: :not_found if item.nil?
+
+    response = item.toggle_like(current_user)
+    render json: response
   end
 end

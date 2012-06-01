@@ -33,4 +33,35 @@ describe Item do
       File.exists?(@item.image.file.file.to_s).should be_true
     end
   end
+
+  describe "toggle_like" do
+
+    # FIXME 書き方微妙...
+    describe "初回登録時" do
+      before do
+        user = FactoryGirl.create(:user)
+        item = FactoryGirl.create(:item)
+        @response = item.toggle_like(user)
+      end
+
+      it "登録されること" do
+        @response[:status].should == :create
+        @response[:count].should == 1
+      end
+    end
+
+    describe "再度登録時" do
+      before do
+        user = FactoryGirl.create(:user)
+        item = FactoryGirl.create(:item)
+        @response = item.toggle_like(user)
+        @response = item.toggle_like(user)
+      end
+
+      it "削除されること" do
+        @response[:status].should == :destroy
+        @response[:count].should == 0
+      end
+    end
+  end
 end

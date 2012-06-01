@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   belongs_to :shop
 
   has_many :item_comments
+  has_many :likes, as: :likeable
 
   validates :title, presence: true
   validates :image, presence: true
@@ -27,6 +28,37 @@ class Item < ActiveRecord::Base
     Item.record_timestamps = false
     update_attribute(:deleted_at, Time.now)
     Item.record_timestamps = true
+  end
+
+  #
+  # 投稿に紐付くユーザーのいいね！情報を取得
+  #
+  def like_by_user(user)
+    self.likes.where(user_id: user.id).first
+  end
+
+  #
+  # いいね！切り替え
+  #
+  def toggle_like(user)
+    return nil if self.nil?
+
+    like = self.like_by_user(user)
+
+    response = {}
+    if like.present?
+      like.destroy
+      response[:status] = :destroy
+    else
+      like = self.likes.build
+      like.user_id = user.id
+      like.save
+      response[:status] = :create
+    end
+
+    response[:count] = self.likes.count
+
+    response
   end
 
 end
