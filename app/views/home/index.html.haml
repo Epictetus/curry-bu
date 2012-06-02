@@ -21,10 +21,10 @@
       %i.icon-upload
       = item.created_at.strftime("%Y/%m/%d %H:%M")
       %br/
-      %i.icon-comment
-      = link_to item.item_comments.count, item_path(item)
       %i.icon-heart
       = item.likes.count
+      %i.icon-comment
+      = link_to item.item_comments.count, item_path(item)
       %br/
       - if item.user == current_user
         %hr/
