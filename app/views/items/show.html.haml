@@ -25,6 +25,7 @@
       %i.icon-eye-open
       = simple_format @item.comment
     %hr/
+    %a{ name: :likes }
     %i.icon-heart
     %span#likes_count
       = @likes_count
@@ -34,6 +35,7 @@
     - @item.likes.each do |like|
       = link_to like.user.login_name, like.user
     %hr/
+    %a{ name: :comments }
     %i.icon-comment
     コメント
     %br/
