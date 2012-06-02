@@ -1,0 +1,36 @@
+- @items.each do |item|
+  .row
+    .offset3.span6
+      .thumbnail
+        = link_to (image_tag item.image_url.to_s), item
+    .span3
+      %h2= link_to item.title, item_path(item)
+      %i.icon-home
+      %strong= link_to item.shop.name, shop_path(item.shop)
+      %br/
+      %i.icon-user
+      = link_to item.user.login_name, user_path(item.user)
+      %br/
+      %i.icon-shopping-cart
+      = item.price
+      円
+      %br/
+      %i.icon-calendar
+      = item.ate_at.strftime("%Y/%m/%d")
+      %br/
+      %i.icon-upload
+      = item.created_at.strftime("%Y/%m/%d %H:%M")
+      %br/
+      %i.icon-heart
+      = link_to item.likes.count, "#{item}#likes"
+      %i.icon-comment
+      = link_to item.item_comments.count, "#{item}#comments"
+      %br/
+      - if item.user == current_user
+        %hr/
+        %i.icon-edit
+        = link_to '編集する', edit_item_path(item)
+        %br/
+        %i.icon-remove
+        = link_to '削除する', item_path(item), method: :delete, confirm: "削除しますか？"
+  %br/
