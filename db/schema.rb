@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531010252) do
+ActiveRecord::Schema.define(:version => 20120602063917) do
 
   create_table "item_comments", :force => true do |t|
     t.integer  "item_id",    :null => false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20120531010252) do
     t.string   "mail",                                :null => false
     t.string   "encrypted_password",  :default => "", :null => false
     t.string   "login_name"
+    t.string   "image"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
     t.datetime "remember_created_at"

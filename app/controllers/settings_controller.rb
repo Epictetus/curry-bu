@@ -14,4 +14,18 @@ class SettingsController < ApplicationController
       render action: :mail_edit
     end
   end
+
+  def icon_edit
+    @user = current_user
+  end
+
+  def icon_update
+    @user = User.find(current_user)
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "アイコンの変更を保存しました。"
+      redirect_to settings_icon_path
+    else
+      render action: :icon_edit
+    end
+  end
 end

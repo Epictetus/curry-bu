@@ -29,7 +29,9 @@ class User < ActiveRecord::Base
     confirmation: true,
     if: :password_required?
 
-  attr_accessible :mail, :login_name, :password, :password_confirmation, :remember_me
+  mount_uploader :image, AvatarUploader
+
+  attr_accessible :mail, :login_name, :image, :password, :password_confirmation, :remember_me
 
   protected
 
