@@ -33,8 +33,9 @@
     %i.icon-heart
     %span#likes_count
       = @likes_count
-    %span#toggle_like
-      = link_to (@like ? 'いいね！を取り消す' : 'いいね！'), toggle_like_item_path(@item)
+    - if user_signed_in?
+      %span#toggle_like
+        = link_to (@like ? 'いいね！を取り消す' : 'いいね！'), toggle_like_item_path(@item)
     %br/
     - @item.likes.each do |like|
       - if like.user.image.present?
