@@ -20,7 +20,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     @likes_count = @item.likes.count
-    @like = @item.like_by_user(current_user)
+    if user_signed_in?
+      @like = @item.like_by_user(current_user)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
