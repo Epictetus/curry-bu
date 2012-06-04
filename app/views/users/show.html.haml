@@ -1,5 +1,8 @@
 .row
   .span3
+    - if @user.image.present?
+      = link_to (image_tag @user.image.thumb.to_s), @user.image.to_s
+      %br/
     %h2= @user.login_name
     %i.icon-calendar
     = @user.created_at.strftime("%Y/%m/%d")

@@ -8,7 +8,11 @@
       = link_to '編集する', edit_item_path(@item)
       %i.icon-remove
       = link_to '削除する', item_path(@item), method: :delete, confirm: "削除しますか？"
-    %h2= @item.title
+    %h2
+      %span.user-icon
+        - if @item.user.image.present?
+          = link_to (image_tag @item.user.image.thumb.to_s), @item.user
+      = @item.title
     %i.icon-home
     %strong= link_to @item.shop.name, @item.shop
     %br/
@@ -33,7 +37,11 @@
       = link_to (@like ? 'いいね！を取り消す' : 'いいね！'), toggle_like_item_path(@item)
     %br/
     - @item.likes.each do |like|
-      = link_to like.user.login_name, like.user
+      - if like.user.image.present?
+        %span.user-icon
+          = link_to (image_tag like.user.image.thumb.to_s), like.user
+      - else
+        = link_to like.user.login_name, like.user
     %hr/
     %a{ name: :comments }
     %i.icon-comment
@@ -42,17 +50,23 @@
 
     - if @item.item_comments.present?
       - @item.item_comments.each do |comment|
-        %strong
-          %i.icon-user
-          = link_to comment.user.login_name, user_path(comment.user)
-        \ 
-        %span.comment-date= comment.created_at.strftime("%Y/%m/%d %H:%M")
-        %br/
-        = simple_format comment.comment
-        - if comment.user == current_user
-          %i.icon-remove
-          = link_to '削除する', [@item, comment], method: :delete, confirm: "削除しますか？"
-        %hr/
+        .item-comment
+          .item-comment-icon
+            %span.user-icon
+              - if @item.user.image.present?
+                = link_to (image_tag @item.user.image.thumb.to_s), @item.user
+          .item-comment-body
+            %strong
+              %i.icon-user
+              = link_to comment.user.login_name, user_path(comment.user)
+            \ 
+            %span.comment-date= comment.created_at.strftime("%Y/%m/%d %H:%M")
+            %br/
+            = simple_format comment.comment
+            - if comment.user == current_user
+              %i.icon-remove
+              = link_to '削除する', [@item, comment], method: :delete, confirm: "削除しますか？"
+          %hr/
     - else
       コメントはありません。
       %br/
