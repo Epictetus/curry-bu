@@ -8,6 +8,7 @@ gem 'haml-rails', '0.3.4'
 
 gem 'devise', '2.0.1'
 gem 'carrierwave', '0.6.1'
+gem 'mini_magick', '3.4'
 
 gem 'rails3_acts_as_paranoid', '0.2.4'
 gem 'foreigner', '1.1.6'

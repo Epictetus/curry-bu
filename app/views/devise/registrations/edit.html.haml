@@ -3,6 +3,7 @@
     %ul.nav.nav-pills.nav-stacked
       %li.active= link_to "アカウント", settings_account_path
       %li= link_to "メールアドレス", settings_mail_path
+      %li= link_to "アイコン", settings_icon_path
   .span9
     %h2 アカウント
     = form_for(@user, url: settings_account_path, html: { class: "form-horizontal", method: :put }) do |f|

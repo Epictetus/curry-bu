@@ -39,6 +39,16 @@ describe :routes do
       it { should route_to("settings#mail_update") }
     end
 
+    describe "GET /settings/icon" do
+      subject { { get: "/settings/icon" } }
+      it { should route_to("settings#icon_edit") }
+    end
+
+    describe "PUT /settings/icon" do
+      subject { { put: "/settings/icon" } }
+      it { should route_to("settings#icon_update") }
+    end
+
   end
 
   describe :shops do

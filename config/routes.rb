@@ -21,6 +21,8 @@ Currybu::Application.routes.draw do
 
   get '/settings/mail' => 'settings#mail_edit'
   put '/settings/mail' => 'settings#mail_update'
+  get '/settings/icon' => 'settings#icon_edit'
+  put '/settings/icon' => 'settings#icon_update'
 
   resources :users, only: [:index, :show]
 
