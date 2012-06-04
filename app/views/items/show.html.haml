@@ -54,8 +54,8 @@
         .item-comment
           .item-comment-icon
             %span.user-icon
-              - if @item.user.image.present?
-                = link_to (image_tag @item.user.image.thumb.to_s), @item.user
+              - if comment.user.image.present?
+                = link_to (image_tag comment.user.image.thumb.to_s), comment.user
           .item-comment-body
             %strong
               %i.icon-user
