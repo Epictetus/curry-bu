@@ -38,3 +38,6 @@
         %i.icon-remove
         = link_to '削除する', item_path(item), method: :delete, confirm: "削除しますか？"
   %br/
+
+.row
+  = paginate @items
