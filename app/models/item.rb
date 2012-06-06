@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  paginates_per 20
+
   acts_as_paranoid
 
   belongs_to :user
