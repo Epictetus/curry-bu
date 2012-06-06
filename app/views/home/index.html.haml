@@ -2,7 +2,7 @@
   .row
     .offset3.span6
       .thumbnail
-        = link_to (image_tag item.image_url.to_s), item
+        = link_to (image_tag item.image.normal.to_s), item
     .span3
       %h2
         - if item.user.image.present?

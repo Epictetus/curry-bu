@@ -1,7 +1,7 @@
 .row
   .span7
     .thumbnail
-      = image_tag @item.image_url.to_s
+      = image_tag @item.image.normal.to_s
   .span5
     - if @item.user == current_user
       %i.icon-edit
@@ -97,7 +97,7 @@
         - @item.user.items.exclude(@item).new_uploads.limit(3).each do |item|
           %li{ class: "span2" }
             .thumbnail
-              = link_to (image_tag item.image_url.to_s), item
+              = link_to (image_tag item.image.thumb.to_s), item
     - else
       %p 他の投稿はありません。
 
@@ -110,6 +110,6 @@
         - @item.shop.items.exclude(@item).new_uploads.limit(3).each do |item|
           %li{ class: "span2" }
             .thumbnail
-              = link_to (image_tag item.image_url.to_s), item
+              = link_to (image_tag item.image.thumb.to_s), item
     - else
       %p 他の投稿はありません。
