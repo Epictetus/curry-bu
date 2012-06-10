@@ -83,11 +83,6 @@ describe :routes do
       it { should route_to("shops#update", id: '1') }
     end
 
-    describe "DELETE /shops/1" do
-      subject { { delete: "/shops/1" } }
-      it { should route_to("shops#destroy", id: '1') }
-    end
-
   end
 
   describe :items do

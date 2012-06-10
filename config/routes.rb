@@ -5,7 +5,7 @@ Currybu::Application.routes.draw do
     get 'toggle_like.json', action: :toggle_like, on: :member, as: :toggle_like, format: false
   end
 
-  resources :shops
+  resources :shops, except: [ :destroy ]
 
   devise_for :users, skip: [ :sessions, :registrations ]
   as :user do

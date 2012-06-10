@@ -1,7 +1,7 @@
 .row
   .span3
     %h2= @shop.name
-    - if @shop.url
+    - if @shop.url.present?
       %i.icon-share
       = link_to @shop.url, @shop.url, target: '_blank'
 
