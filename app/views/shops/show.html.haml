@@ -1,11 +1,9 @@
 .row
   .span3
     %h2= @shop.name
-    %i.icon-user
-    = @shop.create_user.login_name
-    %br/
-    %i.icon-calendar
-    = @shop.created_at.strftime("%Y/%m/%d")
+    - if @shop.url
+      %i.icon-share
+      = link_to @shop.url, @shop.url, target: '_blank'
 
   .span9
     - if @shop.items
