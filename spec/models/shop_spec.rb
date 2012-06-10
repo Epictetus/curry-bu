@@ -40,4 +40,10 @@ describe Shop do
     end
 
   end
+
+  describe "Url" do
+    it { FactoryGirl.build(:shop, url: "http://currybu.in").should be_valid }
+    it { FactoryGirl.build(:shop, url: "https://currybu.in").should be_valid }
+    it { FactoryGirl.build(:shop, url: "fugafuga").should_not be_valid }
+  end
 end

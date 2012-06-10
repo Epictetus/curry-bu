@@ -10,6 +10,9 @@ class Shop < ActiveRecord::Base
     presence: true,
     uniqueness: { scope: :deleted_at }
 
+  validates :url,
+    format: URI::regexp(%w(http https))
+
   validates :create_user_id, presence: true
   validates :update_user_id, presence: true
 end
