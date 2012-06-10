@@ -1,0 +1,13 @@
+.row
+  %ul{ class: "thumbnails" }
+    - @users.each do |user|
+      %li{ class: "span3" }
+        .thumbnail
+          - if user.image.present?
+            = link_to (image_tag user.image.thumb.to_s), user
+          .caption
+            %i.icon-user
+            = link_to user.login_name, user
+            %br/
+            %i.icon-upload
+            = user.items.count
