@@ -64,6 +64,7 @@ class ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     @shop.update_user_id = current_user.id
+    params[:shop].delete(:name)
 
     respond_to do |format|
       if @shop.update_attributes(params[:shop])
