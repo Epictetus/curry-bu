@@ -4,6 +4,8 @@ require 'spec_helper'
 describe User do
   describe "Associations" do
     it { should have_many(:items) }
+    it { should have_many(:likes) }
+    it { should have_many(:item_comments) }
   end
 
   describe "Validation" do
