@@ -2,7 +2,9 @@
 class User < ActiveRecord::Base
   acts_as_paranoid
 
-  has_many :items
+  has_many :items, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :item_comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :rememberable
 
