@@ -1,0 +1,51 @@
+ja:
+  activerecord:
+    models:
+      item: item  #g
+      item_comment: item_comment  #g
+      like: like  #g
+      shop: shop  #g
+      user: user  #g
+
+    attributes:
+      item:
+        ate_at: ate_at  #g
+        comment: comment  #g
+        deleted_at: deleted_at  #g
+        image: image  #g
+        item_comments: item_comments  #g
+        likes: likes  #g
+        price: price  #g
+        shop: :activerecord.models.shop  #g
+        title: title  #g
+        user: :activerecord.models.user  #g
+
+      item_comment:
+        comment: comment  #g
+        deleted_at: deleted_at  #g
+        item: :activerecord.models.item  #g
+        user: :activerecord.models.user  #g
+
+      like:
+        likeable: :activerecord.models.likeable  #g
+        likeable_type: likeable_type  #g
+        user: :activerecord.models.user  #g
+
+      shop:
+        create_user: :activerecord.models.create_user  #g
+        deleted_at: deleted_at  #g
+        items: items  #g
+        name: name  #g
+        update_user: :activerecord.models.update_user  #g
+        url: url  #g
+
+      user:
+        deleted_at: deleted_at  #g
+        encrypted_password: encrypted_password  #g
+        image: image  #g
+        item_comments: item_comments  #g
+        items: items  #g
+        likes: likes  #g
+        login_name: login_name  #g
+        mail: mail  #g
+        remember_created_at: remember_created_at  #g
