@@ -1,51 +1,41 @@
 ja:
   activerecord:
     models:
-      item: item  #g
-      item_comment: item_comment  #g
-      like: like  #g
-      shop: shop  #g
-      user: user  #g
+      item: 投稿  #g
+      item_comment: コメント #g
+      like: いいね！  #g
+      shop: お店  #g
+      user: ユーザー  #g
 
     attributes:
       item:
-        ate_at: ate_at  #g
-        comment: comment  #g
-        deleted_at: deleted_at  #g
-        image: image  #g
-        item_comments: item_comments  #g
-        likes: likes  #g
-        price: price  #g
-        shop: :activerecord.models.shop  #g
-        title: title  #g
-        user: :activerecord.models.user  #g
+        ate_at: 食べた日 #g
+        comment: コメント  #g
+        image: 写真  #g
+        price: 値段  #g
+        shop_id: :activerecord.models.shop  #g
+        title: タイトル  #g
+        user_id: :activerecord.models.user  #g
 
       item_comment:
-        comment: comment  #g
-        deleted_at: deleted_at  #g
-        item: :activerecord.models.item  #g
-        user: :activerecord.models.user  #g
+        comment: コメント  #g
+        item_id: :activerecord.models.item  #g
+        user_id: :activerecord.models.user  #g
 
       like:
-        likeable: :activerecord.models.likeable  #g
-        likeable_type: likeable_type  #g
-        user: :activerecord.models.user  #g
+        likeable: いいね！  #g
+        likeable_type: いいね！の種類 #g
+        user_id: :activerecord.models.user  #g
 
       shop:
-        create_user: :activerecord.models.create_user  #g
-        deleted_at: deleted_at  #g
-        items: items  #g
-        name: name  #g
-        update_user: :activerecord.models.update_user  #g
-        url: url  #g
+        create_user: 作成したユーザー  #g
+        name: お店の名前  #g
+        update_user: 更新したユーザー  #g
+        url: URL  #g
 
       user:
-        deleted_at: deleted_at  #g
-        encrypted_password: encrypted_password  #g
-        image: image  #g
-        item_comments: item_comments  #g
-        items: items  #g
-        likes: likes  #g
-        login_name: login_name  #g
-        mail: mail  #g
-        remember_created_at: remember_created_at  #g
+        image: アイコン  #g
+        login_name: ユーザー名  #g
+        mail: メールアドレス  #g
+        password: パスワード
+        current_password: パスワード(確認)
