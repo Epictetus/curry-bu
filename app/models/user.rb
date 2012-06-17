@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     length: { maximum: 200 }
 
   validates :mail,
-    email: { message: "正しいメールアドレスを入力してください。" },
+    email: { message: "が不正です。" },
     if: Proc.new { |a| a.mail.present? }
 
   validates :password,

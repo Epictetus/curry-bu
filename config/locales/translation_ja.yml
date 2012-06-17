@@ -1,0 +1,41 @@
+ja:
+  activerecord:
+    models:
+      item: 投稿  #g
+      item_comment: コメント #g
+      like: いいね！  #g
+      shop: お店  #g
+      user: ユーザー  #g
+
+    attributes:
+      item:
+        ate_at: 食べた日 #g
+        comment: コメント  #g
+        image: 写真  #g
+        price: 値段  #g
+        shop_id: :activerecord.models.shop  #g
+        title: タイトル  #g
+        user_id: :activerecord.models.user  #g
+
+      item_comment:
+        comment: コメント  #g
+        item_id: :activerecord.models.item  #g
+        user_id: :activerecord.models.user  #g
+
+      like:
+        likeable: いいね！  #g
+        likeable_type: いいね！の種類 #g
+        user_id: :activerecord.models.user  #g
+
+      shop:
+        create_user: 作成したユーザー  #g
+        name: お店の名前  #g
+        update_user: 更新したユーザー  #g
+        url: URL  #g
+
+      user:
+        image: アイコン  #g
+        login_name: ユーザー名  #g
+        mail: メールアドレス  #g
+        password: パスワード
+        current_password: パスワード(確認)

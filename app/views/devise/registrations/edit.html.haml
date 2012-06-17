@@ -7,14 +7,7 @@
   .span9
     %h2 アカウント
     = form_for(@user, url: settings_account_path, html: { class: "form-horizontal", method: :put }) do |f|
-      - if @user.errors.any?
-        .alert.alert-block.alert-error
-          %h4.alert-heading
-            %strong= pluralize(@user.errors.count, "error")
-            prohibited this item from being saved:
-          %ul
-            - @user.errors.full_messages.each do |msg|
-              %li= msg
+      = render partial: 'shared/validation_message', locals: { resource: @user }
       %fieldset
         %div{class: "control-group#{@user.errors[:login_name].empty? ? '' : ' error'}"}
           = f.label :login_name, "ユーザー名", class: "control-label"
