@@ -7,7 +7,7 @@
       %i.icon-edit
       = link_to '編集する', edit_item_path(@item)
       %i.icon-remove
-      = link_to '削除する', item_path(@item), method: :delete, confirm: "削除しますか？"
+      = link_to '削除する', item_path(@item), method: :delete, data: {confirm: "削除しますか？"}
     %h2
       %span.user-icon
         - if @item.user.image.present?
@@ -66,7 +66,7 @@
             = simple_format comment.comment
             - if comment.user == current_user
               %i.icon-remove
-              = link_to '削除する', [@item, comment], method: :delete, confirm: "削除しますか？"
+              = link_to '削除する', [@item, comment], method: :delete, data: {confirm: "削除しますか？"}
           %hr/
     - else
       コメントはありません。
@@ -82,7 +82,7 @@
               - @item_comment.errors.full_messages.each do |msg|
                 %li= msg
         = f.text_area :comment, {rows: 5, style: "width: 90%;"}
-        = f.submit "コメントする", disable_with: "登録中...", class: "btn btn-primary btn-small"
+        = f.submit "コメントする", 'data-disable-with' => "登録中...", class: "btn btn-primary btn-small"
     - else
       = link_to "ログイン", new_user_session_path
       してコメントしましょう！
