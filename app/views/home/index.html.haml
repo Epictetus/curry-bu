@@ -36,7 +36,7 @@
         = link_to '編集する', edit_item_path(item)
         %br/
         %i.icon-remove
-        = link_to '削除する', item_path(item), method: :delete, confirm: "削除しますか？"
+        = link_to '削除する', item_path(item), method: :delete, data: {confirm: "削除しますか？"}
   %br/
 
 .row

@@ -38,4 +38,4 @@
           .controls
             = f.collection_select :shop_id, Shop.all, :id, :name, include_blank: "選んでください"
       .form-actions
-        = f.submit "登録", disable_with: "登録中...", class: "btn btn-primary"
+        = f.submit "登録", 'data-disable-with' => "登録中...", class: "btn btn-primary"

@@ -30,4 +30,4 @@
             %p 設定を変更するには現在のパスワードを入力してください。
         .form-actions
           = f.submit "変更を保存", class: "btn btn-primary"
-      %p= link_to "カレー部を退部する", settings_account_path, :confirm => "本当に退部しますか？", :method => :delete
+      %p= link_to "カレー部を退部する", settings_account_path, method: :delete, data: {confirm: "本当に退部しますか？"}
