@@ -1,14 +1,7 @@
 .row
   .span6.offset3
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "well" }) do |f|
-      - if resource.errors.any?
-        .alert.alert-block.alert-error
-          %h4.alert-heading
-            %strong= pluralize(resource.errors.count, "error")
-            prohibited this item from being saved:
-          %ul
-            - resource.errors.full_messages.each do |msg|
-              %li= msg
+      = render partial: 'shared/validation_message', locals: { resource: @user }
       %fieldset
         %h3 入部届
         %hr/

@@ -1,0 +1,13 @@
+= form_for(@shop, html: { class: "form-horizontal"}) do |f|
+  = render partial: 'shared/validation_message', locals: { resource: @shop }
+  - if params[:action] == 'new'
+    .field
+      = f.label :name
+      %br/
+      = f.text_field :name
+  .field
+    = f.label :url
+    %br/
+    = f.text_field :url
+  .actions
+    = f.submit

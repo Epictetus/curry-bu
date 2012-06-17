@@ -1,0 +1,7 @@
+- if resource.errors.any?
+  .alert.alert-block.alert-error
+    %h4.alert-heading
+      %strong= "#{resource.errors.count}つのエラーが発生しました。次の項目を確認してください。"
+    %ul
+      - resource.errors.full_messages.each do |msg|
+        %li= msg

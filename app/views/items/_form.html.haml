@@ -1,0 +1,41 @@
+.row
+  .span12
+    = form_for(@item, html: {multipart: true, class: "form-horizontal"}) do |f|
+      = render partial: 'shared/validation_message', locals: { resource: @item }
+      %fieldset
+        %legend 食べたものについて
+        .control-group
+          = f.label :title, "名前"
+          .controls
+            = f.text_field :title
+            %p.help-block カレー、カレーうどんなど
+        .control-group
+          = f.label :image, "写真"
+          .controls
+            = f.file_field :image
+            %p.help-block 食べたものの写真を選んでください！
+        .control-group
+          = f.label :price, "値段"
+          .controls
+            .input-append
+              = f.text_field :price, {class: "span2"}
+              %span.add-on 円
+            %p.help-block 大体で良いです
+        .control-group
+          = f.label :comment, "コメント"
+          .controls
+            = f.text_area :comment, {rows: 3}
+            %p.help-block 感想があれば
+        .control-group
+          = f.label :ate_at, "食べた日"
+          .controls
+            = f.date_select :ate_at, {use_month_numbers: true, end_year: Time.now.year, date_separator: "-"}, {class: "span1"}
+
+      %fieldset
+        %legend お店について
+        .control-group
+          = f.label :shop_id, "お店"
+          .controls
+            = f.collection_select :shop_id, Shop.all, :id, :name, include_blank: "選んでください"
+      .form-actions
+        = f.submit "登録", disable_with: "登録中...", class: "btn btn-primary"
