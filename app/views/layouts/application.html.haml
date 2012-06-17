@@ -41,8 +41,8 @@
                     %li= link_to "設定", settings_account_path
                     %li= link_to "ログアウト", destroy_user_session_path, method: 'delete'
               - else
-                %li= link_to "ログイン", new_user_session_path
                 %li= link_to "入部する", new_user_registration_path
+                %li= link_to "ログイン", new_user_session_path
     .container
       .content
         = render 'layouts/messages'
