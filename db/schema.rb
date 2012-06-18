@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120610075810) do
+ActiveRecord::Schema.define(:version => 20120618010533) do
 
   create_table "item_comments", :force => true do |t|
     t.integer  "item_id",    :null => false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120610075810) do
     t.integer  "create_user_id", :null => false
     t.integer  "update_user_id", :null => false
     t.datetime "deleted_at"
+    t.string   "address"
   end
 
   add_index "shops", ["create_user_id"], :name => "shops_create_user_id_fk"

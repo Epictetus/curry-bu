@@ -1,13 +1,21 @@
-= form_for(@shop, html: { class: "form-horizontal"}) do |f|
-  = render partial: 'shared/validation_message', locals: { resource: @shop }
-  - if params[:action] == 'new'
-    .field
-      = f.label :name
-      %br/
-      = f.text_field :name
-  .field
-    = f.label :url
-    %br/
-    = f.text_field :url
-  .actions
-    = f.submit
+.row
+  .span12
+    = form_for(@shop, html: {class: "form-horizontal"}) do |f|
+      = render partial: 'shared/validation_message', locals: { resource: @shop }
+      %fieldset
+        %legend お店について
+        - if defined?(is_new) and is_new
+          .control-group
+            = f.label :name, "お店の名前"
+            .controls
+              = f.text_field :name
+        .control-group
+          = f.label :url, "URL"
+          .controls
+            = f.text_field :url
+        .control-group
+          = f.label :address, "住所"
+          .controls
+            = f.text_field :address
+      .form-actions
+        = f.submit "登録", 'data-disable-with' => "登録中...", class: "btn btn-primary"
