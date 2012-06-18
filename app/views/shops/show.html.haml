@@ -4,6 +4,14 @@
     - if @shop.url.present?
       %i.icon-share
       = link_to @shop.url, @shop.url, target: '_blank'
+    - if @shop.address.present?
+      %br/
+      %i.icon-home
+      = @shop.address
+    - if user_signed_in?
+      %br/
+      %i.icon-edit
+      = link_to 'このお店を編集する', edit_shop_path(@shop)
 
   .span9
     - if @shop.items
