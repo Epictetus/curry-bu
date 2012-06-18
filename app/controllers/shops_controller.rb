@@ -1,3 +1,4 @@
+# coding: utf-8
 class ShopsController < ApplicationController
 
   before_filter :authenticate_user!,
@@ -50,7 +51,7 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
+        format.html { redirect_to @shop, notice: 'お店を登録しました。' }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
@@ -68,7 +69,7 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       if @shop.update_attributes(params[:shop])
-        format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to @shop, notice: 'お店を編集しました。' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
