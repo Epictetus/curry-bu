@@ -1,6 +1,8 @@
 !!!
 %html{:lang => "ja"}
   %head
+    %title
+      = content_for?(:title) ? "#{content_for(:title)} - CurryBu" : 'CurryBu'
     %meta{charset: "utf-8"}
       %title CurryBu
       = csrf_meta_tags
