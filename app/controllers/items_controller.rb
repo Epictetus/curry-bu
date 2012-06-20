@@ -71,7 +71,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
 
-    if not @item.user_id == current_user.id
+    unless @item.user_id == current_user.id
       redirect_to request.referer
     end
 
