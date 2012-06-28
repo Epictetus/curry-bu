@@ -98,9 +98,10 @@ class ItemsController < ApplicationController
     redirect_to items_url
   end
 
+  # GET /items/1/toggle_like.json
   def toggle_like
     item = Item.find_by_id(params[:id])
-    return render json: {status: :error}, status: :not_found if item.nil?
+    return render json: { status: :error }, status: :not_found if item.nil?
 
     response = item.toggle_like(current_user)
     render json: response
