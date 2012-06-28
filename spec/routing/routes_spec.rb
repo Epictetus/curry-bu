@@ -83,6 +83,20 @@ describe :routes do
       it { should route_to("shops#update", id: '1') }
     end
 
+    describe :shop_tags do
+
+      describe "POST /shops/1/tags" do
+        subject { { post: "/shops/1/tags" } }
+        it { should route_to("shop_tags#create", shop_id: '1') }
+      end
+
+      describe "DELETE /shops/1/tags" do
+        subject { { delete: "/shops/1/tags" } }
+        it { should route_to("shop_tags#destroy", shop_id: '1') }
+      end
+
+    end
+
   end
 
   describe :items do

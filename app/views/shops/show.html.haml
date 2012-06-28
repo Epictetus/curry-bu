@@ -1,4 +1,5 @@
 - title "#{@shop.name}"
+#data-info{ 'data-shop-id' => @shop.id }
 .row
   .span3
     %h2= @shop.name
@@ -9,8 +10,20 @@
       %br/
       %i.icon-home
       = @shop.address
+
+    %br/
+    %i.icon-tags
+    %br/
+    #shop-tags
+      %ul#tag-list
+        - @shop.tags.each do |tag|
+          %li= tag.name
     - if user_signed_in?
       %br/
+      %input#tags{ name: 'tags', value: @shop.tags.join(',') }
+
+    %br/
+    - if user_signed_in?
       %i.icon-edit
       = link_to 'このお店を編集する', edit_shop_path(@shop)
 

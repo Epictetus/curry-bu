@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
 //= require jquery.masonry.min
+//= require jquery.tagsinput
+//= require_tree .

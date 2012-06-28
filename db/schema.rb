@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618010533) do
+ActiveRecord::Schema.define(:version => 20120624093037) do
 
   create_table "item_comments", :force => true do |t|
     t.integer  "item_id",    :null => false
@@ -69,6 +69,23 @@ ActiveRecord::Schema.define(:version => 20120618010533) do
   add_index "shops", ["deleted_at"], :name => "index_shops_on_deleted_at"
   add_index "shops", ["name", "deleted_at"], :name => "index_shops_on_name_and_deleted_at", :unique => true
   add_index "shops", ["update_user_id"], :name => "shops_update_user_id_fk"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "mail",                                :null => false
