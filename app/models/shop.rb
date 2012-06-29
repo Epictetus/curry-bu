@@ -12,7 +12,8 @@ class Shop < ActiveRecord::Base
     uniqueness: { scope: :deleted_at }
 
   validates :url,
-    format: URI::regexp(%w(http https))
+    format: URI::regexp(%w(http https)),
+    if: Proc.new { |a| a.url.present? }
 
   validates :create_user_id, presence: true
   validates :update_user_id, presence: true
@@ -24,8 +25,7 @@ class Shop < ActiveRecord::Base
     tags = self.tags.map { |tag| tag.name }
     tags << name
     comma_tags = tags.join(',')
-    self.tag_list = comma_tags
-    self.save
+    self.update_attributes!(tag_list: comma_tags)
   end
 
   #
@@ -37,7 +37,6 @@ class Shop < ActiveRecord::Base
       new_tags << tag.name unless tag.name == name
     end
     comma_tags = new_tags.join(',')
-    self.tag_list = comma_tags
-    self.save
+    self.update_attributes(tag_list: comma_tags)
   end
 end
