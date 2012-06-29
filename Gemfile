@@ -16,6 +16,7 @@ gem 'foreigner', '1.1.6'
 gem 'kaminari', '0.13.0'
 gem 'twitter-bootstrap-rails', '2.0.2', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'i18n_generators', '1.2.1'
+gem 'acts-as-taggable-on', '2.3.1'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

@@ -5,7 +5,10 @@ Currybu::Application.routes.draw do
     get 'toggle_like.json', action: :toggle_like, on: :member, as: :toggle_like, format: false
   end
 
-  resources :shops, except: [ :destroy ]
+  resources :shops, except: [ :destroy ] do
+    post 'tags' => 'shop_tags#create'
+    delete 'tags' => 'shop_tags#destroy'
+  end
 
   devise_for :users, skip: [ :sessions, :registrations ]
   as :user do
