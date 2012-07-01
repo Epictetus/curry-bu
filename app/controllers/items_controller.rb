@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
+    @shop = Shop.new
     @shops = Shop.all
 
     respond_to do |format|
@@ -46,7 +47,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
-    #@shops = Shop.all
+    @shop = Shop.new
   end
 
   # POST /items

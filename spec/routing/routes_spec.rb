@@ -83,6 +83,11 @@ describe :routes do
       it { should route_to("shops#update", id: '1') }
     end
 
+    describe "POST /shops/modal" do
+      subject { { post: "/shops/modal" } }
+      it { should route_to("shops#create_modal") }
+    end
+
     describe :shop_tags do
 
       describe "POST /shops/1/tags" do
