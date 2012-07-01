@@ -6,6 +6,7 @@ Currybu::Application.routes.draw do
   end
 
   resources :shops, except: [ :destroy ] do
+    post 'modal' => 'shops#create_modal', on: :collection
     post 'tags' => 'shop_tags#create'
     delete 'tags' => 'shop_tags#destroy'
   end

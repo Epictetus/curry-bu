@@ -77,4 +77,19 @@ class ShopsController < ApplicationController
       end
     end
   end
+
+  # POST /shops/modal.json
+  def create_modal
+    @shop = Shop.new(params[:shop])
+    @shop.create_user_id = current_user.id
+    @shop.update_user_id = current_user.id
+
+    respond_to do |format|
+      if @shop.save
+        format.json { render json: @shop, status: :created, location: @shop }
+      else
+        format.json { render json: @shop.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

@@ -24,12 +24,12 @@
         .control-group
           = f.label :comment, "コメント"
           .controls
-            = f.text_area :comment, {rows: 3}
+            = f.text_area :comment, { rows: 3 }
             %p.help-block 感想があれば
         .control-group
           = f.label :ate_at, "食べた日"
           .controls
-            = f.date_select :ate_at, {use_month_numbers: true, end_year: Time.now.year, date_separator: "-"}, {class: "span1"}
+            = f.date_select :ate_at, { use_month_numbers: true, end_year: Time.now.year, date_separator: "-"} , { class: "span1" }
 
       %fieldset
         %legend お店について
@@ -37,5 +37,33 @@
           = f.label :shop_id, "お店"
           .controls
             = f.collection_select :shop_id, Shop.all, :id, :name, include_blank: "選んでください"
+            %a{ href: "#create-shop", 'data-toggle' => "modal" }
+              追加する
+
       .form-actions
         = f.submit "登録", 'data-disable-with' => "登録中...", class: "btn btn-primary"
+
+#create-shop{ class: 'modal hide' }
+  .modal-header
+    %button.close{ type: 'button', 'data-dismiss' => 'modal' }×
+    %h3 お店を登録する
+  .modal-body
+    #shop-errors{ style: 'display: none;' }
+      .alert.alert-block.alert-error
+        %ul#shop-errors-list
+    = form_for(@shop, url: modal_shops_path, html: { id: 'shop-form', class: "form-horizontal" }) do |f|
+      %fieldset
+        .control-group
+          = f.label :name, "お店の名前"
+          .controls
+            = f.text_field :name
+        .control-group
+          = f.label :url, "URL"
+          .controls
+            = f.text_field :url
+        .control-group
+          = f.label :address, "住所"
+          .controls
+            = f.text_field :address
+  .modal-footer
+    %btn#shop-save{ href: '#', class: 'btn btn-primary' }登録
