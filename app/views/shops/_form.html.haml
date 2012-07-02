@@ -6,15 +6,15 @@
         %legend お店について
         - if defined?(is_new) and is_new
           .control-group
-            = f.label :name, "お店の名前"
+            = f.label :name, "お店の名前", class: 'control-label'
             .controls
               = f.text_field :name
         .control-group
-          = f.label :url, "URL"
+          = f.label :url, "URL", class: 'control-label'
           .controls
             = f.text_field :url
         .control-group
-          = f.label :address, "住所"
+          = f.label :address, "住所", class: 'control-label'
           .controls
             = f.text_field :address
       .form-actions
