@@ -36,7 +36,7 @@ group :deployment do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.9.0'
+  gem 'rspec-rails', '2.10.1'
   gem 'guard-spork', '0.7.0'
   gem 'guard-rspec', '0.7.0'
   gem 'shoulda-matchers', '1.1.0'
