@@ -26,7 +26,7 @@ group :assets do
 end
 
 group :production do
-  gem 'unicorn', '4.2.0'
+  gem 'unicorn', '4.3.1'
 end
 
 group :deployment do
