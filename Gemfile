@@ -7,7 +7,7 @@ gem 'jquery-rails', '2.0.2'
 gem 'haml-rails', '0.3.4'
 
 gem 'devise', '2.1.2'
-gem 'carrierwave', '0.6.1'
+gem 'carrierwave', '0.6.2'
 gem 'mini_magick', '3.4'
 
 gem 'rails3_acts_as_paranoid', '0.2.4'
