@@ -37,8 +37,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '2.10.1'
-  gem 'guard-spork', '0.7.0'
-  gem 'guard-rspec', '0.7.0'
+  gem 'guard-spork', '1.1.0'
+  gem 'guard-rspec', '1.1.0'
   gem 'shoulda-matchers', '1.1.0'
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '3.2.0'
