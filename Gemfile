@@ -17,6 +17,7 @@ gem 'kaminari', '0.13.0'
 gem 'twitter-bootstrap-rails', '2.1.0'
 gem 'i18n_generators', '1.2.1'
 gem 'acts-as-taggable-on', '2.3.1'
+gem 'fog', '1.4.0'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
@@ -26,7 +27,6 @@ end
 
 group :production do
   gem 'unicorn', '4.2.0'
-  gem 'fog', '1.1.2'
 end
 
 group :deployment do
