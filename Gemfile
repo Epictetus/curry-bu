@@ -22,7 +22,7 @@ gem 'fog', '1.4.0'
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '~> 1.2.4'
+  gem 'uglifier', '~> 1.2.6'
 end
 
 group :production do
