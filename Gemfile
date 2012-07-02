@@ -14,7 +14,7 @@ gem 'rails3_acts_as_paranoid', '0.2.4'
 gem 'foreigner', '1.1.6'
 
 gem 'kaminari', '0.13.0'
-gem 'twitter-bootstrap-rails', '2.0.2', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', '2.1.0'
 gem 'i18n_generators', '1.2.1'
 gem 'acts-as-taggable-on', '2.3.1'
 
