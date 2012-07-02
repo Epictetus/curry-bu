@@ -18,6 +18,8 @@ class Shop < ActiveRecord::Base
   validates :create_user_id, presence: true
   validates :update_user_id, presence: true
 
+  attr_accessible :name, :url, :address, :tag_list
+
   #
   # タグを追加する
   #

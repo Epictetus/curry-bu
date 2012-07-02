@@ -54,6 +54,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
+    @shop = Shop.new
     @item.user_id = current_user.id.to_s
 
     respond_to do |format|
@@ -71,6 +72,7 @@ class ItemsController < ApplicationController
   # PUT /items/1.json
   def update
     @item = Item.find(params[:id])
+    @shop = Shop.new
 
     unless @item.user_id == current_user.id
       redirect_to request.referer
