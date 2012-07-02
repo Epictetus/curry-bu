@@ -269,7 +269,7 @@ DEPENDENCIES
   capistrano_colors (= 0.5.5)
   capybara (= 1.1.2)
   carrierwave (= 0.6.2)
-  coffee-rails (~> 3.2.1)
+  coffee-rails (~> 3.2.2)
   database_cleaner (= 0.7.2)
   devise (= 2.1.2)
   factory_girl_rails (= 3.2.0)
