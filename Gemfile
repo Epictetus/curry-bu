@@ -18,6 +18,7 @@ gem 'twitter-bootstrap-rails', '2.1.0'
 gem 'i18n_generators', '1.2.1'
 gem 'acts-as-taggable-on', '2.3.1'
 gem 'fog', '1.4.0'
+gem 'google-analytics-rails', '0.0.3'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
