@@ -30,6 +30,8 @@
               %li= link_to "画像", items_path
               %li= link_to "人", users_path
             %ul.nav.pull-right
+              %li= link_to "GitHub", 'https://github.com/fact-real/curry-bu'
+              %li.divider-vertical
               - if user_signed_in?
                 %li= link_to "アップロード", new_item_path
                 %li.divider-vertical
