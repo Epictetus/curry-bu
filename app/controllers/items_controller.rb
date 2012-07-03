@@ -48,6 +48,10 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @shop = Shop.new
+
+    unless @item.user_id == current_user.id
+      return redirect_to root_path
+    end
   end
 
   # POST /items
@@ -75,7 +79,7 @@ class ItemsController < ApplicationController
     @shop = Shop.new
 
     unless @item.user_id == current_user.id
-      redirect_to request.referer
+      return redirect_to root_path
     end
 
     respond_to do |format|
@@ -94,9 +98,11 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
 
-    if @item.user_id == current_user.id
-      @item.destroy
+    unless @item.user_id == current_user.id
+      return redirect_to root_path
     end
+
+    @item.destroy
 
     redirect_to items_url
   end
