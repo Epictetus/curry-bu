@@ -4,28 +4,20 @@
   <tr>
     <th>Title</th>
     <th>Comment</th>
-    <th>Image</th>
     <th>Ate at</th>
     <th>Shop</th>
     <th>Price</th>
     <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
-    <td><%= item.title %></td>
+    <td><%= link_to item.title, item %></td>
     <td><%= item.comment %></td>
-    <td><%= item.image %></td>
     <td><%= item.ate_at %></td>
     <td><%= item.shop.name %></td>
     <td><%= item.price %></td>
     <td><%= item.user.login_name %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
