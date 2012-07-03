@@ -1,17 +1,23 @@
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql2
+  database: currybu_development
+  user: root
+  password:
   pool: 5
   timeout: 5000
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: mysql2
+  database: currybu_test
+  user: root
+  password:
   pool: 5
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: currybu_production
+  user: root
+  password:
   pool: 5
   timeout: 5000

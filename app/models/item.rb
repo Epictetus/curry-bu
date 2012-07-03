@@ -21,6 +21,8 @@ class Item < ActiveRecord::Base
 
   mount_uploader :image, ItemUploader
 
+  attr_accessible :title, :price, :comment, :ate_at, :image, :shop_id
+
   # FIXME
   # acts_as_paranoid で論理削除を行なっても CarrierWave で
   # 実ファイルが削除されてしまう件の対応

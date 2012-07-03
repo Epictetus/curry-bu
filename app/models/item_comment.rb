@@ -9,4 +9,6 @@ class ItemComment < ActiveRecord::Base
   validates :comment,
     presence: true,
     length: { maximum: 1000 }
+
+  attr_accessible :comment
 end
