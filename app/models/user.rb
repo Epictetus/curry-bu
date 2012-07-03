@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     length: { maximum: 40 }
 
   validates :login_name,
-    format: { with: /^[0-9A-Za-z]+$/ , message: "は半角英数字で入力してください。" },
+    format: { with: /^[0-9A-Za-z_-]+$/ , message: "は半角英数字、アンダーバー、ハイフンを入力してください。" },
     if: Proc.new { |a| a.login_name.present? }
 
   validates :mail,
