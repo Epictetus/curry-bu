@@ -1,0 +1,16 @@
+- title 'お店一覧'
+
+= link_to '新しいお店を登録する', new_shop_path
+
+%table{ class: 'table table-striped'}
+  %thead
+    %tr
+      %th 名前
+      %th URL
+      %th 住所
+  %tbody
+    - @shops.each do |shop|
+      %tr
+        %td= link_to shop.name, shop
+        %td= link_to shop.url, shop.url, { target: '_blank' }
+        %td= shop.address

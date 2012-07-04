@@ -13,8 +13,7 @@ describe "Shops" do
       visit shops_path
     end
 
-    it { page.should have_content("Listing shops") }
-    it { page.should have_content("test shop") }
+    it { page.should have_content("お店を登録する") }
   end
 
 end
