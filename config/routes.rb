@@ -1,5 +1,7 @@
 Currybu::Application.routes.draw do
 
+  mount Doorkeeper::Engine => '/oauth'
+
   resources :items do
     resources :item_comments, path: "comments", only: [ :create, :destroy ]
     get 'toggle_like.json', action: :toggle_like, on: :member, as: :toggle_like, format: false
