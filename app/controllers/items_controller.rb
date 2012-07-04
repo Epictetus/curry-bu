@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.new_uploads.all
+    @items = Item.new_uploads.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

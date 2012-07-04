@@ -1,0 +1,27 @@
+- title "みんなのカレー"
+.row
+  .span12
+    - if @items.present?
+      %ul{ class: "thumbnails" }
+        - @items.each do |item|
+          %li{ class: "span3" }
+            .thumbnail
+              = link_to (image_tag item.image.thumb.to_s), item
+              .caption
+                %h5= link_to item.title, item
+                %i.icon-home
+                = link_to item.shop.name, item.shop
+                %br/
+                %i.icon-user
+                = link_to item.user.login_name, item.user
+                %br/
+                %i.icon-calendar
+                = item.ate_at.strftime("%Y/%m/%d")
+                %br/
+                %i.icon-heart
+                = link_to item.likes.count, "#{item_path(item)}#likes"
+                %i.icon-comment
+                = link_to item.item_comments.count, "#{item_path(item)}#comments"
+
+.row
+  = paginate @items
