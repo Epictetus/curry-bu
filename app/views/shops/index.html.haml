@@ -12,5 +12,5 @@
     - @shops.each do |shop|
       %tr
         %td= link_to shop.name, shop
-        %td= link_to shop.url, shop.url, { target: '_blank' }
-        %td= shop.address
+        %td= if shop.url.present? then link_to shop.url, shop.url, { target: '_blank' } else '-' end
+        %td= if shop.address.present? then shop.address else '-' end
