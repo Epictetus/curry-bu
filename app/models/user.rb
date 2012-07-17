@@ -2,11 +2,16 @@
 class User < ActiveRecord::Base
   acts_as_paranoid
 
+  extend FriendlyId
+  friendly_id :login_name
+
+  devise :database_authenticatable, :registerable, :rememberable
+
+  mount_uploader :image, AvatarUploader
+
   has_many :items, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :item_comments, dependent: :destroy
-
-  devise :database_authenticatable, :registerable, :rememberable
 
   validates :login_name,
     presence: true,
@@ -30,8 +35,6 @@ class User < ActiveRecord::Base
     presence: true,
     confirmation: true,
     if: :password_required?
-
-  mount_uploader :image, AvatarUploader
 
   attr_accessible :mail, :login_name, :image, :password, :password_confirmation, :remember_me
 
