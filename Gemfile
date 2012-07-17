@@ -20,6 +20,7 @@ gem 'acts-as-taggable-on', '2.3.1'
 gem 'fog', '1.4.0'
 gem 'google-analytics-rails', '0.0.3'
 gem 'doorkeeper', '0.4.2'
+gem 'friendly_id', '4.0.7'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
