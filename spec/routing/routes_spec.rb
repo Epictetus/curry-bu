@@ -203,4 +203,37 @@ describe :routes do
 
   end
 
+  describe :api do
+    describe :credentials do
+      # me
+      describe "GET /api/me" do
+        subject { { get: "/api/me" } }
+        it { should route_to("api/credentials#me") }
+      end
+    end
+
+    describe :users do
+      describe "GET /api/users" do
+        subject { { get: "/api/users" } }
+        it { should route_to("api/users#index") }
+      end
+      describe "GET /api/users/1" do
+        subject { { get: "/api/users/1" } }
+        it { should route_to("api/users#show", id: '1') }
+      end
+    end
+
+    describe :items do
+      it { get('/api/items').should route_to('api/items#index') }
+      it { get('/api/items/1').should route_to('api/items#show', id: '1') }
+      it { post('/api/items').should route_to('api/items#create') }
+    end
+
+    describe :shops do
+      it { get("/api/shops").should route_to("api/shops#index") }
+      it { get("/api/shops/1").should route_to("api/shops#show", id: '1') }
+      it { post("/api/shops").should route_to("api/shops#create") }
+    end
+  end
+
 end
