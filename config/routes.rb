@@ -30,5 +30,25 @@ Currybu::Application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+  namespace :api do
+    get '/me' => 'credentials#me'
+    resources :users, only: [:index, :show]
+    resources :items, only: [:index, :show, :create]
+    resources :shops, only: [:index, :show, :create]
+  end
+
+  scope path: '/oauth' do
+    get '/authorize' => 'doorkeeper/authorizations#new'
+    post '/authorize' => 'doorkeeper/authorizations#create'
+    delete '/authorize' => 'doorkeeper/authorizations#destroy'
+    post '/token' => 'doorkeeper/tokens#create'
+
+    if Rails.env.development?
+      resources :authorized_applications,
+        controller: 'doorkeeper/authorized_applications',
+        only: [:index, :destroy]
+    end
+  end
+
   root :to => 'home#index'
 end
